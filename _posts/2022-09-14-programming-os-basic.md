@@ -4,7 +4,7 @@ title:  "[Programming] 프로그래밍이란?"
 excerpt: "프로그래밍에 대한 기초에 대해 알아보기"
 
 categories:
-  - CS
+  - OS
 tags:
   - [programming, os]
 
@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
  
 date: 2022-09-14
-last_modified_at: 2022-09-15
+last_modified_at: 2022-09-27
 ---
 
 
@@ -82,8 +82,8 @@ last_modified_at: 2022-09-15
 ## 5. System call
     
 POSIX API: Portable Operating System Interface
-    - 서로 다른 UNIX OS의 **공통 API** 를 정리하여 이식성 높은 유닉스 응용프로그램을 개발하기 위한 목적
-    - 윈도우 API
+- 서로 다른 UNIX OS의 **공통 API** 를 정리하여 이식성 높은 유닉스 응용프로그램을 개발하기 위한 목적
+- 윈도우 API
 
 ![system_call.png](../../assets/images/system_call.png)
 
