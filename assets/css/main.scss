@@ -7,3 +7,6 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// Font, search from https://fonts.google.com/
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+Korean');

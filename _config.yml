@@ -19,11 +19,11 @@ locale                   : "ko-KR"
 title                    : "나의 공부일지"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Chachaylmo"
+name                     : "Chachayelmo"
 description              : "끄적끄적"
-url                      : "https://mytempchacha.github.io"
+url                      : "https://chachayelmo.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "chachayelmo/mytempchacha.github.io"
+repository               : "chachayelmo/chachayelmo.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -106,13 +106,13 @@ analytics:
 # Site Author
 author:
   name             : "공부하는 챠챠"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/momo.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Today I Learned!"
   #location         : "Seoul"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:leskyui@email.com"
+      url: "mailto:lesktyu@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/chachayelmo"
@@ -131,7 +131,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/chachayelmo"
     # - label: "GitLab"
     #   icon: "fab fa-fw fa-gitlab"
       # url:
