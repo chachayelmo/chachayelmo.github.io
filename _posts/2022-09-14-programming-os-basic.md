@@ -39,6 +39,7 @@ last_modified_at: 2022-09-27
 ## 2. 운영체제
 
 - 종류: OS, Windows, Mac, UNIX
+    ![os.png](../../assets/images/os.png){: .align-center}
 - UNIX:
     - UNIX OS, LINUX OS
     - 역할:
@@ -47,13 +48,8 @@ last_modified_at: 2022-09-27
         - 응용프로그램 제어
     - 시분할 시스템: 다중 사용자를 지원하고 컴퓨터 응답 시간을 최소화
     - 멀티태스킹: 단일 CPU에서 여러 응용프로그램을 병렬 실행을 가능하게 함, 사용자가 느끼기에 여러 프로그램이 동시에 실행되는 것 처럼 보이는 것
-    
-    ![time_system.png](../../assets/images/time_system.png)
-    
-    ![os.png](../../assets/images/os.png)
-    
-    UNIX: 현대 운영체제의 기본 기술을 모두 포함한 최초의 운영체제
-    
+    ![time_system.png](../../assets/images/time_system.png){: .align-center}
+    - UNIX: 현대 운영체제의 기본 기술을 모두 포함한 최초의 운영체제
     - 멀티태스킹, 시분할 시스템, 멀티 프로그래밍
     
 
@@ -85,7 +81,7 @@ POSIX API: Portable Operating System Interface
 - 서로 다른 UNIX OS의 **공통 API** 를 정리하여 이식성 높은 유닉스 응용프로그램을 개발하기 위한 목적
 - 윈도우 API
 
-![system_call.png](../../assets/images/system_call.png)
+![system_call.png](../../assets/images/system_call.png){: .align-center}
 
 
 ## 참고

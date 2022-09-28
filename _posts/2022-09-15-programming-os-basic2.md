@@ -22,7 +22,7 @@ last_modified_at: 2022-09-27
 - Stack: 임시 데이터(함수호출, 로컬변수 등)
 - Heap: 동적으로 만들어지는 데이터 (malloc, new 등)
 
-![process_conf.png](../../assets/images/process_conf.png)
+![process_conf.png](../../assets/images/process_conf.png){: .align-center}
 
 - PC (Program Counter) + SP(Stack Pointer)
 - PCB: Process Context Block
@@ -34,7 +34,7 @@ last_modified_at: 2022-09-27
 - 실행 중지할 프로세스 정보를 해당 프로세스의 PCB에 업데이트해서 Main Memory에 저장
 - 다음 실행할 프로세스 정보를 Main Memory에 있는 해당 PCB 정보(PC, SP)를 CPU의 Register에 넣고 실행
 
-![context.png](../../assets/images/context.png)
+![context.png](../../assets/images/context.png){: .align-center}
 
 - Dispatch : ready 상태의 프로세스를 running 상태로 바꾸는 것
 
@@ -45,7 +45,7 @@ last_modified_at: 2022-09-27
 - 인터럽트 처리 함수 실행 (OS)
 - 현 프로세스 재실행 (PCB 정보를 CPU에 Load)
 
-![kernel_interrupt.png](../../assets/images/kernel_interrupt.png)
+![kernel_interrupt.png](../../assets/images/kernel_interrupt.png){: .align-center}
 
 - 프로세스 스위칭은 실제 nano sec 단위로 일어남
     - 컨텍스트 스위칭 동작
@@ -85,14 +85,19 @@ last_modified_at: 2022-09-27
     6. Semaphore
     7. Socket
 
-    자세한 내용은 다음에 알아보도록 하시죠.    
-
 ### 4.3 리눅스 프로세스
-    - 프로세스간 공간은 완전 분리
-    - 커널 공간은 공유
+- 프로세스간 공간은 완전 분리
+![ipc_2.png](../../assets/images/ipc_2.png){: .align-center}
+- 커널 공간은 공유
+![ipc_1.png](../../assets/images/ipc_1.png){: .align-center}
 
-![ipc_1.png](../../assets/images/ipc_1.png)
-![ipc_2.png](../../assets/images/ipc_2.png)
+## 5. 스케줄링 알고리즘
+1. FIFO 스케줄링 알고리즘 (배치 처리 시스템)
+2. 최단 작업 우선 스케줄링 알고리즘 (Process 시간이 짧은 순)
+3. 우선순위 기반 스케줄링 알고리즘
+    - 정적 우선순위: 프로세스마다 우선순위를 미리 지정
+    - 동적 우선순위: 스케줄러에 의해 동적으로 변경
+4. Round Robin 스케줄링 (시분할 시스템 기반)
 
 ## 참고
 [펀코딩](https://www.fun-coding.org/contextswitching.html)
