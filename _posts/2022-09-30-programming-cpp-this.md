@@ -4,9 +4,9 @@ title:  "[Programming] C++ this call"
 excerpt: "C++에 대해 알아보기, this"
 
 categories:
-  - cpp
+  - Cpp
 tags:
-  - [C++, cpp, this]
+  - [C++, Cpp, This]
 
 toc: true
 toc_sticky: true

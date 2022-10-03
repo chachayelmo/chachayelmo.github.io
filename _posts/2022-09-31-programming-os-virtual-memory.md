@@ -4,9 +4,9 @@ title:  "[Programming] 가상메모리 - Virtual Memory"
 excerpt: "가상메모리에 대해 알아보기"
 
 categories:
-  - os
+  - OS
 tags:
-  - [os, memory, virtual]
+  - [OS, Memory, Virtual]
 
 toc: true
 toc_sticky: true

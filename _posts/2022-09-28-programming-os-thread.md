@@ -6,7 +6,7 @@ excerpt: "프로그래밍에 대해 알아보기 4번째, 스레드"
 categories:
   - OS
 tags:
-  - [programming, Thread]
+  - [Programming, Thread]
 
 toc: true
 toc_sticky: true

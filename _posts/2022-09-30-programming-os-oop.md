@@ -4,9 +4,9 @@ title:  "[Programming] 객체지향이란? OOP"
 excerpt: "C++에 대해 알아보기, this"
 
 categories:
-  - os
+  - OS
 tags:
-  - [os, oop]
+  - [OS, Oop]
 
 toc: true
 toc_sticky: true

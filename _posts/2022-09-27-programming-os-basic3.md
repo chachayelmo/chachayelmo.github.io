@@ -6,7 +6,7 @@ excerpt: "프로그래밍에 대해 알아보기 3번째, IPC 방법들"
 categories:
   - OS
 tags:
-  - [programming, IPC]
+  - [Programming, Ipc, OS]
 
 toc: true
 toc_sticky: true

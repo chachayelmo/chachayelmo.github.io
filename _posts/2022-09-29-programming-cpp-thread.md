@@ -4,9 +4,9 @@ title:  "[Programming] C++ thread"
 excerpt: "C++에 대해 알아보기, thread 함수"
 
 categories:
-  - cpp
+  - Cpp
 tags:
-  - [C++, cpp, thread]
+  - [C++, Cpp, Thread]
 
 toc: true
 toc_sticky: true

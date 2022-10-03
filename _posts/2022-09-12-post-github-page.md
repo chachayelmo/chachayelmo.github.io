@@ -4,9 +4,9 @@ title:  "[GitHub Page] 깃허브 페이지 사용법"
 excerpt: "깃허브 페이지 만들기 A to Z"
 
 categories:
-  - etc
+  - Etc
 tags:
-  - [GitHub, etc, minimal-mistakes]
+  - [GitHub, Etc, Minimal-mistakes]
 
 toc: true
 toc_sticky: true

@@ -6,7 +6,7 @@ excerpt: "프로그래밍에 대한 기초에 대해 알아보기"
 categories:
   - OS
 tags:
-  - [programming, os]
+  - [Programming, OS]
 
 toc: true
 toc_sticky: true

@@ -6,7 +6,7 @@ excerpt: "프로그래밍에 대해 알아보기 2번째"
 categories:
   - OS
 tags:
-  - [programming, process, IPC]
+  - [Programming, Process, Ipc]
 
 toc: true
 toc_sticky: true

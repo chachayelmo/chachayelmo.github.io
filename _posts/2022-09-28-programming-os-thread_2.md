@@ -6,7 +6,7 @@ excerpt: "프로그래밍에 대해 알아보기 5번째, 스레드 동기화"
 categories:
   - OS
 tags:
-  - [programming, Thread]
+  - [Programming, Thread, Sync]
 
 toc: true
 toc_sticky: true
