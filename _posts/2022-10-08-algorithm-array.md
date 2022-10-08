@@ -26,6 +26,8 @@ last_modified_at: 2022-10-08
     - 추가/삭제가 어려움
     - 미리 공간을 확보해야 됨
 
+## 2. C++ 구현
+
 ```cpp
 #include <stdio.h>
 #include <array>
@@ -77,10 +79,37 @@ int main() {
 }
 ```
 
+## 3. Python 구현
+- list를 사용하지만 이는 C++로 보면 array, stack 등 여러가지 컨테이너가 합쳐진 형태
+
+```python
+def main():
+    array_list = [3, 2, 1, 5, 9]
+
+    # 값 변경
+    print("before change ", array_list)
+    array_list[3] = 100
+    print("after change ", array_list)
+
+    # 사이즈
+    print("size ", len(array_list))
+
+    # 값 추가
+    array_list.append(999)
+    print("add ", array_list)
+
+    # 값 제거
+    array_list.remove(2)
+    print("remove ", array_list)
+
+if __name__ == "__main__":
+	main()
+
+```
 
 
 ## 참고
-[잔재미코딩](https://www.fun-coding.org/DS&AL1-2.html)
+[잔재미코딩](https://www.fun-coding.org/DS&AL1-2.html)  
 [CPP Reference](https://en.cppreference.com/w/cpp/container/array)
 
 <br>
