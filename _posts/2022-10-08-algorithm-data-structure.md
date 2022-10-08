@@ -1,12 +1,12 @@
 ---
 published: true
-title:  "[Programming] 자료구조"
-excerpt: "다양한 자료구조에 대해 한눈에 알아보기"
+title:  "[Programming] 자료구조 - Array"
+excerpt: "다양한 자료구조에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DataStructure]
+  - [DataStructure, array]
 
 toc: true
 toc_sticky: true
@@ -81,6 +81,7 @@ int main() {
 
 ## 참고
 [잔재미코딩](https://www.fun-coding.org/DS&AL1-2.html)
+[CPP Reference](https://en.cppreference.com/w/cpp/container/array)
 
 <br>
 
