@@ -4,9 +4,9 @@ title:  "[Programming] Data structure and Algorithm"
 excerpt: "데이터 구조와 알고리즘에 대해 알아보기"
 
 categories:
-  - OS
+  - Algorithm
 tags:
-  - [OS, DataStructure, Algorithm]
+  - [DataStructure, Algorithm]
 
 toc: true
 toc_sticky: true
