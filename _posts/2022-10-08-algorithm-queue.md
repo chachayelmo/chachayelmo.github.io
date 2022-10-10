@@ -11,8 +11,8 @@ tags:
 toc: true
 toc_sticky: true
  
-date: 2022-10-09
-last_modified_at: 2022-10-09
+date: 2022-10-10
+last_modified_at: 2022-10-10
 ---
 
 ## 1. Queue
@@ -26,12 +26,12 @@ last_modified_at: 2022-10-09
 ![image](https://user-images.githubusercontent.com/23397039/194700788-f749a2db-f935-4351-8331-9e42dd84ca2f.png){: .align-center}
 
 - C++ 큐 함수	 
-    - empty()	비어있으면 true 아니면 false를 리턴
-    - size()	원소의 수를 리턴
-    - front()	맨 앞 원소 리턴
-    - back()	맨 뒤 원소 리턴
-    - push(a)	맨 뒤에 원소 a를 추가
-    - pop()	맨 앞 원소 삭제
+    - empty() :	비어있으면 true 아니면 false를 리턴
+    - size() : 원소의 수를 리턴
+    - front() : 맨 앞 원소 리턴
+    - back() : 맨 뒤 원소 리턴
+    - push(a) : 맨 뒤에 원소 a를 추가
+    - pop() : 맨 앞 원소 삭제
 
 ## 2. C++ 구현
 
@@ -271,7 +271,7 @@ if __name__ == "__main__":
 ## 참고
 [https://sanghyu.tistory.com/83](https://sanghyu.tistory.com/83)  
 [https://kbj96.tistory.com/15](https://kbj96.tistory.com/15)  
-[CPP Reference](https://en.cppreference.com/w/cpp/container)
+[CPP Reference](https://en.cppreference.com/w/cpp/container)  
 [Python heapq](https://docs.python.org/ko/3/library/heapq.html)
 <br>
 
