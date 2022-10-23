@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chachayelmo.github.io/sitemap.xml
