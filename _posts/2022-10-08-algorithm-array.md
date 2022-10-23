@@ -27,6 +27,7 @@ last_modified_at: 2022-10-08
     - 미리 공간을 확보해야 됨
 
 ## 2. C++ 구현
+- [web_compiler](https://godbolt.org/) 에서 확인
 
 ```cpp
 #include <stdio.h>
@@ -80,6 +81,7 @@ int main() {
 ```
 
 ## 3. Python 구현
+- [web_python_compiler](https://www.onlinegdb.com/online_python_compiler) 에서 확인
 - list를 사용하지만 이는 C++로 보면 array, stack 등 여러가지 컨테이너가 합쳐진 형태
 
 ```python

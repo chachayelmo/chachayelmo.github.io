@@ -22,6 +22,7 @@ last_modified_at: 2022-10-21
     - using은 template의 별명이 가능
 
 ## 2. 코드로 알아보기
+- [web_compiler](https://godbolt.org/) 에서 확인
 
 ```cpp
 //typedef int DWORD; 

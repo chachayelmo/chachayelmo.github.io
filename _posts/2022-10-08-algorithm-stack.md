@@ -36,6 +36,7 @@ last_modified_at: 2022-10-11
     - pop() : 맨 뒤의 element를 삭제
 
 ## 3.1. C++ 구현
+- [web_compiler](https://godbolt.org/) 에서 확인
 
 ```cpp
 #include <iostream>
@@ -71,6 +72,7 @@ int main(){
 ```
 
 ## 3.2. Python 구현
+- [web_python_compiler](https://www.onlinegdb.com/online_python_compiler) 에서 확인
 
 ```python
 def main():

@@ -21,6 +21,8 @@ last_modified_at: 2022-10-16
     2. Placement New = 있는 메모리에 생성자만 호출 (e.q. “new (p) Point”)
 
 ## 2. 코드로 알아보기
+- [web_compiler](https://godbolt.org/) 에서 확인
+
 ### 2.1. New의 동작 방식 
 1. operator new()라는 함수로 메모리 할당 
 2. 1번이 성공하면 생성자 호출 

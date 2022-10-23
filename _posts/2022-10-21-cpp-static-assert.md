@@ -19,6 +19,7 @@ last_modified_at: 2022-10-21
 - compile time 때 assert를 해주는 기능
 
 ## 2. 코드로 알아보기
+- [web_compiler](https://godbolt.org/) 에서 확인
 - 함수 인자는 사용하기 전에 유효성 여부를 확인하는 것이 좋음
 
 ```cpp

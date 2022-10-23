@@ -51,6 +51,7 @@ last_modified_at: 2022-10-12
 - li.sort() : 모든 원소를 오름차순(default)으로 정렬
 
 ## 2. C++ 구현
+- [web_compiler](https://godbolt.org/) 에서 확인
 
 ```cpp
 // constructing lists
@@ -103,6 +104,7 @@ int main ()
 ```
 
 ## 3. Python 구현
+- [web_python_compiler](https://www.onlinegdb.com/online_python_compiler) 에서 확인
 
 ```python
 # 노드

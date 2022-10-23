@@ -136,6 +136,8 @@ if __name__ == "__main__":
     - size() :        우선순위 큐에 포함되어 있는 원소의 수를 반환한다
 
 ### 4.1. C++ 구현
+- [web_compiler](https://godbolt.org/) 에서 확인
+
 ```cpp
 #include <functional>
 #include <queue>
@@ -204,6 +206,8 @@ int main() {
 ```
 
 ### 4.2. Python 구현
+- [web_python_compiler](https://www.onlinegdb.com/online_python_compiler) 에서 확인
+
 ```python
 from queue import PriorityQueue
 import heapq
