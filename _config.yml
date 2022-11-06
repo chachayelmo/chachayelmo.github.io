@@ -79,7 +79,7 @@ bing_site_verification   :
 naver_site_verification  :
 yandex_site_verification :
 baidu_site_verification  :
-
+google_analytics: G-C8N07PZ62R
 # Social Sharing
 twitter:
   username               :
@@ -187,6 +187,13 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
+# safe: true
+# source: https://chachayelmo.github.io
+# gist:
+  # noscript: false
+# kramdown:
+  # math_engine: mathjax
+  # syntax_highlighter: rouge
 
 
 # Markdown Processing
@@ -217,10 +224,11 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 # Plugins (previously gems:)
 plugins:
   - jekyll-paginate
-  - jekyll-sitemap
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-seo-tag # seo tag
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -266,7 +274,6 @@ compress_html:
   clippings: all
   ignore:
     envs: development
-
 
 # Defaults
 defaults:
