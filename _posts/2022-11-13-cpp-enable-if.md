@@ -160,7 +160,7 @@ int main()
 
 ## 참고
 codenuri 강석민 강사 강의 내용기반으로 정리한 내용입니다.  
-[코드누리](https://github.com/codenuri)
+[코드누리](https://github.com/codenuri)  
 [cppreference](https://en.cppreference.com/w/cpp/types/enable_if)
 
 <br>
