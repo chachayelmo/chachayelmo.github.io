@@ -10,3 +10,5 @@ main:
   #   url: /about/
   - title: "Year"
     url: /year-archive/
+  - title: "Search"
+    url: /search/
