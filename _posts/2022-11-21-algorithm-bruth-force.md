@@ -12,19 +12,24 @@ toc: true
 toc_sticky: true
  
 date: 2022-11-22
-last_modified_at: 2022-11-27
+last_modified_at: 2022-12-04
 ---
 
 ## 1. 완전 탐색
 - 문제를 해결하기 위해 확인해야 하는 모든 경우의 수를 전부 탐색하는 방법
 - 그중에서도 back-tracking을 통해야 하는 상황을 해결하기
 - 모든 코테 문제에서 기본적으로 접근해야 됨
+  - 고를 수 있는 값의 종류 파악하기
+  - 중복을 허용하는 지
+  - 순서가 중요한 지
 
 ## 2. 완전 탐색 종류
 - N개 중 {중복을 허용/ 중복 없이} M개를 {순서 있게 나열하기 / 고르기}
 
 ### 2.1. N개 중 중복 허용 / M개를 순서 있게 나열하기
 [N과 M(3)](https://www.acmicpc.net/problem/15651)
+- 1부터 N까지 자연수 중에서 M개를 고른 수열
+- 같은 수를 여러 번 골라도 된다.
 
 ```python
 import sys
@@ -50,8 +55,9 @@ def rec_func(k):
 rec_func(0) # 실행
 ```
 
-### 2.1. N개 중 중복 없이 / M개를 순서 있게 나열하기
+### 2.2. N개 중 중복 없이 / M개를 순서 있게 나열하기
 [N과 M(1)](https://www.acmicpc.net/problem/15649)
+- 1부터 N까지 자연수 중에서 중복 없이 M개를 고른 수열
 
 ```python
 # 1 <= M, N <= 8
@@ -105,6 +111,88 @@ def rec_func(k):
       rec_func(k + 1)
       selected[k] = 0
       is_used[cand] = 0
+
+rec_func(0)
+```
+### 2.3. N개 중 중복 허용 / M개를 고르기
+[N과 M(4)](https://www.acmicpc.net/problem/15652)
+- 1부터 N까지 자연수 중에서 M개를 고른 수열
+- 같은 수를 여러 번 골라도 된다.
+- 고른 수열은 비내림차순이어야 한다.
+  - 길이가 K인 수열 A가 A1 ≤ A2 ≤ ... ≤ AK-1 ≤ AK를 만족하면, 비내림차순이라고 한다.
+
+```python
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+n, m = map(int, input().split())
+
+selected = [0] * m
+
+def rec_func(k):
+  if k == m:
+    # 다 고른 배열 출력
+    print(*selected)
+  else:
+    start = selected[k - 1]
+    if start == 0: start = 1
+    for cand in range(start, n + 1):
+      selected[k] = cand
+      rec_func(k + 1)
+      selected[k] = 0
+
+rec_func(0)
+```
+
+### 2.4. N개 중 중복없이 / M개를 고르기
+[N과 M (2)](https://www.acmicpc.net/problem/15650)
+- 1부터 N까지 자연수 중에서 중복 없이 M개를 고른 수열
+- 고른 수열은 오름차순이어야 한다.
+
+```python
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+n, m = map(int, input().split())
+
+selected = [0] * m
+is_used = [0] * (n + 1)
+
+def rec_func(k, idx):
+  if k == m:
+    # 다 고른 배열 출력
+    print(*selected)
+  else:
+    for cand in range(idx, n + 1):
+      if is_used[cand] == 1: # 사용 중인 숫자를 제외하고 탐색
+        continue
+      selected[k] = cand
+      is_used[cand] = 1
+      rec_func(k + 1, cand)
+      selected[k] = 0
+      is_used[cand] = 0
+
+rec_func(0, 1)
+```
+
+```python
+# 시간 : O(nCm) = 70
+# 공간 : O(m)
+
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+n, m = map(int, input().split())
+
+selected = [0] * m
+is_used = [0] * (n + 1)
+
+def rec_func(k):
+  if k == m:
+    # 다 고른 배열 출력
+    print(*selected)
+  else:
+    for cand in range(selected[k-1] + 1, n + 1):
+      selected[k] = cand
+      rec_func(k + 1)
+      selected[k] = 0
 
 rec_func(0)
 ```
