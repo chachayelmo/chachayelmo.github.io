@@ -1,7 +1,7 @@
 ---
 published: true
 title:  "[Programming] system call 함수"
-excerpt: "C++에 대해 알아보기, system_call"
+excerpt: "프로그래밍에 대해 알아보기, system_call"
 
 categories:
   - OS

@@ -1,7 +1,7 @@
 ---
 published: true
 title:  "[Programming] Linux redirection"
-excerpt: "C++에 대해 알아보기, redirection"
+excerpt: "프로그래밍에 대해 알아보기, redirection"
 
 categories:
   - OS

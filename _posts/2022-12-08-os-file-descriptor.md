@@ -1,7 +1,7 @@
 ---
 published: true
 title:  "[Programming] 파일 디스크립터"
-excerpt: "C++에 대해 알아보기, File descriptor"
+excerpt: "프로그래밍에 대해 알아보기, File descriptor"
 
 categories:
   - OS
