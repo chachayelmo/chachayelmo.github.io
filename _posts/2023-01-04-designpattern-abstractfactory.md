@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Design Pattern] Abstract Factory pattern"
+title:  "[Design Pattern] Creational - Abstract Factory pattern"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
@@ -125,9 +125,9 @@ int main()
 ```
 
 ## 참고
-[https://en.wikipedia.org/wiki/Abstract_factory_pattern](https://en.wikipedia.org/wiki/Abstract_factory_pattern)  
-[https://4z7l.github.io/2020/12/25/design_pattern_GoF.html](https://4z7l.github.io/2020/12/25/design_pattern_GoF.html)  
-[https://gmlwjd9405.github.io/2018/08/08/abstract-factory-pattern.html](https://gmlwjd9405.github.io/2018/08/08/abstract-factory-pattern.html)
+[wikipedia](https://en.wikipedia.org/wiki/Abstract_factory_pattern)  
+[4z7l](https://4z7l.github.io/2020/12/25/design_pattern_GoF.html)  
+[gmlwjd9405](https://gmlwjd9405.github.io/2018/08/08/abstract-factory-pattern.html)
 
 <br>
 
