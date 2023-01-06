@@ -154,7 +154,7 @@ int main() {
 
 ## 참고
 [wikipedia](https://en.wikipedia.org/wiki/Factory_method_pattern)  
-[refactoring.guru](https://refactoring.guru/design-patterns/factory-method/cpp/example)
+[refactoring.guru](https://refactoring.guru/design-patterns/factory-method)
 
 <br>
 
