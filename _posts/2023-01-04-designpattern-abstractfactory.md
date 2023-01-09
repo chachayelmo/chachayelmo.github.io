@@ -60,15 +60,15 @@ last_modified_at: 2023-01-04
     - 추상팩토리는 제품군의 각 클래스에서부터 객체들을 생성할 수 있는 인터페이스를 제공
     - 인터페이스를 통해 개체를 생성하면 이미 생성된 제품과 일치하지 않는 잘못된 제품 생성에 대해 걱정할 필요가 없음
 
-## 4. 장단점
+## 4. Pros and Cons
 
-- 장점
-    - 팩토리로부터 만든 제품이 서로 호환되는지 확인 가능
-    - 제품과 클라이언트 코드 간의 tight couplong을 피할 수 있음
-    - Single Responsibility Principle
-    - Open/Closed Principle
-- 단점
-    - 패턴과 함께 새로운 인터페이스와 클래스가 도입되기 때문에 코드가 복잡해질 수 있음
+### 4.1. Pros
+- 팩토리로부터 만든 제품이 서로 호환되는지 확인 가능
+- 제품과 클라이언트 코드 간의 tight couplong을 피할 수 있음
+- Single Responsibility Principle
+- Open/Closed Principle
+### 4.2. Cons
+- 패턴과 함께 새로운 인터페이스와 클래스가 도입되기 때문에 코드가 복잡해질 수 있음
 
 ## 5. 코드로 알아보기
 

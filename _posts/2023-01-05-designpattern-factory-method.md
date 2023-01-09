@@ -60,14 +60,14 @@ last_modified_at: 2023-01-06
     - 코드의 중복사용을 줄일 수 있음
     
 
-## 4. 장단점
+## 4. Pros and Cons
 
-- 장점
-    - Creator와 Product들이 tight coupling 되는 것을 방지할 수 있음
-    - Single Responsibility Principle, Product 생성 코드를 한 곳으로 모을 수 있음
-    - Open/Closed Principle, 기존 client 코드를 유지하면서 새로운 타입의 Product를 추가할 수 있음
-- 단점
-    - 패턴을 구현하기 위해 많은 서브클래스를 도입해야 하므로 코드가 더 복잡해질 수 있음
+### 4.1. Pros
+  - Creator와 Product들이 tight coupling 되는 것을 방지할 수 있음
+  - Single Responsibility Principle, Product 생성 코드를 한 곳으로 모을 수 있음
+  - Open/Closed Principle, 기존 client 코드를 유지하면서 새로운 타입의 Product를 추가할 수 있음
+### 4.2. Cons
+  - 패턴을 구현하기 위해 많은 서브클래스를 도입해야 하므로 코드가 더 복잡해질 수 있음
 
 ## 5. 코드로 알아보기
 
