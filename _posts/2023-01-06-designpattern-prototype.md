@@ -18,13 +18,13 @@ last_modified_at: 2023-01-06
 ## 1. Prototype pattern
 
 - 실제 제품을 만들기에 앞서 테스트를 위한 샘플 제품을 만드는 것
-- 객체를 생성하는데 비용이 많이 들고, 비슷한 객체가 이미 있는 경우에 사용되는 패턴
+- 객체를 생성하는 데 비용이 많이 들고, 비슷한 객체가 이미 있는 경우에 사용되는 패턴
 - 즉, 원본 객체를 새로운 객체에 복사하여 필요에 따라 수정하는 메커니즘을 제공
 
 ![image](https://user-images.githubusercontent.com/23397039/210472834-4c78775b-a6b8-4f98-94ba-948ad5d7038d.png)
 
-- 모든 프로토타입 클래스는 concreate class를 알 수 없어도 객체를 복사할 수 있는 공통 인터페이스를 사용함
-- 프로토타입 object는 full copy를 통해 다른 객체의 private field를 접근할 수 있음
+- 모든 프로토타입 클래스는 concrete class를 알 수 없어도 객체를 복사할 수 있는 공통 인터페이스를 사용함
+- 프로토타입 object는 full copy를 통해 다른 객체의 private field에 접근할 수 있음
 
 ## 2. 코드로 알아보기
 

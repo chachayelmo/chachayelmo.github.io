@@ -18,7 +18,7 @@ last_modified_at: 2023-01-06
 ## 1. Builder pattern
 
 - 복잡한 객체를 생성하는 방법과 표현하는 방법을 분리
-- Product의 속성을 결정하는 부분과 생성하는 부분을 분리시키는 것
+- Product의 속성을 결정하는 부분과 생성하는 부분을 분리하는 것
 - Product를 생성할 때 Product에 전달해야 할 파라미터가 많다면 고려
 
 ### 1.1. 의도
@@ -33,8 +33,8 @@ last_modified_at: 2023-01-06
 
 ![image](https://user-images.githubusercontent.com/23397039/210970961-bfc3bc17-74ea-4af6-9c05-3a9b71282e0d.png){: .align-center}
 
-- 위와 같이 House 를 만든다고 생각했을 때, 집을 만들기 위해 벽, 문, 창문, 지붕 등 다양한 것을이 기반으로 만들어져야 함
-- 이를 House의 생성자에 전부 넣어 만드는 방법이 있는데 이는 아래와 같은 문제를 발생시킴
+- 위와 같이 House 를 만든다고 생각했을 때, 집을 만들기 위해 벽, 문, 창문, 지붕 등 다양한 것들이 기반으로 만들어져야 함
+- 이를 House의 생성자의 전부 넣어 만드는 방법이 있는데 이는 아래와 같은 문제를 발생시킴
     
 ![image](https://user-images.githubusercontent.com/23397039/210971010-7e4bfc66-af76-4d17-8913-c9c012c31e77.png){: .align-center}
 
@@ -47,7 +47,7 @@ last_modified_at: 2023-01-06
 ![image](https://user-images.githubusercontent.com/23397039/210971087-d5cda280-ee6e-43b1-b67e-afd80dffabf6.png){: .align-center} 
 
 - 빌더는 제품이 생성되는 동안 다른 개체들이 제품에 접근하는 것을 허용하지 않음
-- 객체 생성을 일련의 단계들로 정리하며, 객체를 생성하고 싶으면 위 단계들을 빌더 객체에 실행하면 되고 모든 단계를 호출할 필요없이 특정 configuration을 하여 필요한 단계들만 호출하면 됨
+- 객체 생성을 일련의 단계들로 정리하며, 객체를 생성하고 싶으면 위 단계들을 빌더 객체에 실행하면 되고 모든 단계를 호출할 필요 없이 특정 configuration을 하여 필요한 단계들만 호출하면 됨
 
 ## 2. 구조
 
