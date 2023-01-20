@@ -15,7 +15,7 @@ date: 2023-01-04
 last_modified_at: 2023-01-04
 ---
 
-### 1. Abstract Factory
+## 1. Abstract Factory
 
 - 구체적인 Concrete Class를 지정하지 않고 공통된 테마를 가진 개별 팩토리를 캡슐화하는 방법
 
@@ -44,7 +44,6 @@ last_modified_at: 2023-01-04
 
 - 제품의 변형은 추상 팩토리 인터페이스를 기반으로 별도의 팩토리 클래스를 만들어서 특정 종류의 제품을 return 하는 클래스를 가짐
 - 클라이언트 코드는 자신에 해당하는 추상 인터페이스를 통해 팩토리들과 제품들과 함께 동작
-
 ## 2. 구조
 
 ![image](https://user-images.githubusercontent.com/23397039/210967757-0591952f-7eea-41e3-9e25-30ebc1a73a65.png){: .align-center}
