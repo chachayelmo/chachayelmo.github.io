@@ -307,7 +307,9 @@ int main()
 
 ## 3. advance 함수
 
-- #include <iterator>
+```cpp
+#include <iterator>
+```
 - iterator를 N 만큼 전진(후진) 하는 함수
 
 ```cpp

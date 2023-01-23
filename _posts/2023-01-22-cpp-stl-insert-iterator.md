@@ -24,7 +24,9 @@ last_modified_at: 2023-01-22
 
 ### 1.2. 삽입 반복자
 
-- #include <iterator>
+```cpp
+#include <iterator>
+```
 - 컨테이너에 요소를 추가할 때 사용하는 반복자
 - 3가지 종류 - 전방 삽입 / 후방 삽입 / 임의 삽입 제공
 
