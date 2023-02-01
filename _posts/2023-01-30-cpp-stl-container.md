@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
  
 date: 2023-01-30
-last_modified_at: 2023-01-30
+last_modified_at: 2023-02-01
 ---
 
 ## 1. Container
@@ -411,6 +411,126 @@ int main()
     cout << "---------" << endl;
 }
 ```
+
+## 4. associative container
+
+### 4.1. Set
+
+- 트리로 구성되어 있으며, C++의 경우 set이 RB tree로 구현되어 있음
+
+```cpp
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+    set<int> s; // RB tree
+
+    s.insert(30);
+    s.insert(40);
+    s.insert(20);
+    s.insert(10);
+    s.insert(45);
+    s.insert(25);
+
+    auto p = begin(s); // 왼쪽 마지막 자식을 가리킴
+    while (p != end(s)) {
+        cout << *p << endl;
+        ++p;
+    }
+}
+```
+
+- set의 기본모양
+
+```cpp
+template<
+	class Key,
+	class Compare = std::less<Key>
+  class Allocator = std::allocator<Key>
+> class set;
+```
+
+- 요소를 추가하는 방법
+    - push_xxx는 사용 불가, insert 또는 emplace 로만 사용이 가능
+    - 반복자를 통해서 값을 변경할 수 없음
+- 요소를 검색하는 방법
+    - tree 라서 find 알고리즘을 사용하기 보단 멤버함수 find를 사용하는 것이 좋음
+
+```cpp
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+    // set<int> s;
+    set<int, greater<int>> s; // RB tree
+
+    // s.push_front(10); // error
+    s.insert(30);
+    s.insert(40); // < 연산으로 비교, > 로 하려면 정책을 바꾸면 됨
+    s.insert(20);
+    s.insert(10);
+    s.insert(45);
+    s.insert(25);
+
+    auto p = begin(s); // 왼쪽 마지막 자식을 가리킴
+    // *p = 10; // error, 상수임
+    while (p != end(s)) {
+        cout << *p << endl;
+        ++p;
+    }
+
+    // find는 선형검색이기 때문에 트리에서는 안좋음
+    // 멤버함수 find가 있으며 이진 검색을 함
+    auto p2 = s.find(10);
+    cout << *p2 << endl;
+}
+```
+
+- set은 중복을 허용하지 않음
+    - multiset은 중복을 허용
+- set의 return 타입
+    - set : pair<iterator, bool>
+    - multiset : iterator
+
+```cpp
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+    // set<int> s;
+    multiset<int> s;
+
+    s.insert(30);
+    s.insert(40);
+    s.insert(20);
+    s.insert(10);
+    s.insert(45);
+    s.insert(25);
+
+    // 이미 들어가 있는 경우
+    // pair<set<int>::iterator, bool> ret = s.insert(20);
+    // set은 pair를 반환
+    // multiset : iterator만 반환
+    auto ret = s.insert(20);
+    // if ( ret.second == false )
+    //     cout << "fail" << endl;
+
+    for (auto& n : s)   cout << n << endl;
+}
+```
+
+- set에 사용자 정의 타입을 넣으려면
+    - 사용자 정의 타입 안에 < 연산을 제공하거나
+    - < 연산을 수행하는 함수 객체를 만들어 set의 2번째 템플릿 인자로 전달
 
 ## 참고
 codenuri 강석민 강사 강의 내용기반으로 정리한 내용입니다.  
