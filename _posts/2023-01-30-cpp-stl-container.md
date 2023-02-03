@@ -1,18 +1,18 @@
 ---
 published: true
-title:  "[Programming] STL algorithm"
-excerpt: "algorithm 에 대해 알아보기"
+title:  "[Programming] STL container"
+excerpt: "container 에 대해 알아보기"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, STL, algorithm]
+  - [C++, Cpp, STL, Container]
 
 toc: true
 toc_sticky: true
  
 date: 2023-01-30
-last_modified_at: 2023-02-01
+last_modified_at: 2023-02-03
 ---
 
 ## 1. Container
@@ -532,6 +532,189 @@ int main()
     - 사용자 정의 타입 안에 < 연산을 제공하거나
     - < 연산을 수행하는 함수 객체를 만들어 set의 2번째 템플릿 인자로 전달
 
+### 4.2. map
+
+- pair를 저장하는 set
+- key(first) 값으로 data(second)를 저장
+- map에 요소를 넣는 방법
+    - pair 객체를 만들어서 insert
+    - make_pair를 사용
+    - 배열 연산자[] 사용
+
+```cpp
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+struct Point
+{
+    int x, y;
+    Point(int a = 0, int b = 0) : x(a), y(b) {}
+};
+
+int main()
+{
+    map<string, string> m;
+
+    // 1. pair를 만들어서 insert
+    pair<string, string> p1("key", "value");
+    m.insert(p1);
+
+    // 2. make_pair
+    m.insert(make_pair("key2", "value2"));
+
+    // 3. [] 연산
+    m["key3"] = "value3";
+
+    auto ret = m.find("key4");
+    if ( ret == m.end())
+        cout << "failed" << endl;
+}
+```
+
+- 반복자 요소를 가리키는 포인터 역할의 객체
+- pair를 가리키는 포인터
+
+```cpp
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    map<int, string> m;
+
+    m[0] = "ZERO";
+    m[1] = "ONE";
+    m[2] = "TWO";
+
+    auto p = begin(m); // p는 pair를 가리키는 포인터
+
+    cout << p->first << endl;  // key 0
+    cout << p->second << endl; // value "ZERO"
+
+    ++p;
+    cout << p->first << endl;  // key 1
+    cout << p->second << endl; // value "ONE"
+}
+```
+
+### 4.3. unordered_map/set
+
+- hash table 기반의 자료 구조
+- hash function
+
+```cpp
+#include <iostream>
+#include <functional>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    hash<int> hi;
+    hash<double> hd;
+    hash<string> hs;
+
+    cout << hi(50) << endl;
+    cout << hd(3.4) << endl;
+    cout << hs("hello") << endl;
+}
+```
+
+- unordered_set
+    - hash table을 사용하는 set
+    - 정렬을 유지하지 않음
+
+```cpp
+#include <iostream>
+#include <functional>
+#include <string>
+#include <unordered_set>
+
+using namespace std;
+
+int main()
+{
+    unordered_set<int> s; // set : < 사용, unordered : hash
+
+    s.insert(30);
+    s.insert(40);
+    s.insert(20);
+    s.insert(10);
+    s.insert(45);
+    s.insert(25);
+
+    s.find(20); // set : root부터 < 사용, unordered : hash
+
+    // set : 정렬 유지, unordered : 정렬 x
+    for(auto& n : s)
+        cout << n << endl;
+}
+```
+
+- unordered 컨테이너에 사용자 정의 타입을 넣으려면
+
+```cpp
+template <
+	class Key,
+	class Hash = std::hash<key>,
+	class KeyEqual = std::equal_to<Key>,
+	class Allocator = std::allocator<Key>
+> class unordered_set;
+```
+
+- 사용자 타입에 대한 hash 함수가 필요
+- 사용자 타입에 대한 equal 조사하는 함수가 필요
+
+```cpp
+
+#include <iostream>
+#include <set>
+#include <unordered_set>
+
+using namespace std;
+
+struct Point {
+    int x,y;
+    Point(int a=0, int b=0) : x(a), y(b) {}
+};
+
+// Point의 해쉬 함수 객체
+struct PointHash
+{
+    int operator()(const Point& p) const
+    {
+        hash<int> hi;
+        return hi(p.x) + hi(p.y);
+    }
+};
+
+struct PointEqual
+{
+    bool operator()(const Point& p1, const Point& p2) const
+    {
+        return p1.x == p2.x && p1.y == p2.y;
+    }
+};
+
+int main()
+{
+    // set<Point> s; // < 필요, == 필요 없음
+
+    unordered_set<Point, PointHash, PointEqual> s;
+    s.insert( Point(1,1) ); // hash 함수 전달
+    s.insert( Point(2,2) ); // == 도 필요
+    s.insert( Point(3,4) );
+
+    s.find(Point(1,1));
+}
+```
 ## 참고
 codenuri 강석민 강사 강의 내용기반으로 정리한 내용입니다.  
 [코드누리](https://github.com/codenuri)  
