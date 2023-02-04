@@ -349,6 +349,128 @@ int main()
 }
 ```
 
+## 3. weak_ptr
+
+### 3.1. 상호 참조 문제
+
+![image](https://user-images.githubusercontent.com/23397039/216758288-f955e0ac-e017-4904-b547-a362c65218b9.png){: .align-center}
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct People
+{
+    string name;
+    // shared_ptr<People> bf;
+    People* bf; // Raw Pointer : 참조 계수가 증가하지 않음
+                // 단점 : 대상 객체가 파괴되었는 지 알 수 없음
+                // 솔루션 : weak_ptr
+    // weak_ptr<People> bf;
+    People(string s) : name(s) {}
+    ~People() { cout << "~People :" << name << endl; }
+};
+
+int main()
+{
+    shared_ptr<People> p1( new People("KIM"));
+    {
+        shared_ptr<People> p2( new People("LEE"));
+
+        // p1->bf = p2;
+        // p2->bf = p1;
+        p1->bf = p2.get();
+        p2->bf = p1.get();
+    } // p2 자원 파괴
+
+    if (p1->bf != 0)
+        cout << p1->bf->name << endl;
+}
+```
+
+### 3.2. weak_ptr
+
+- use count가 증가하지 않는 스마트 포인터
+- expired() 멤버 함수로 대상 객체의 유효성을 확인할 수 있음
+- use_count가 0일 때 대상 객체는 파괴 되지만 제어 블록은 use_count, weak_count 모두 0일 때 파괴
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct People
+{
+    string name;
+    weak_ptr<People> bf;
+    People(string s="") : name(s) {}
+    ~People() { cout << "~People :" << name << endl; }
+    void Go() { cout << "Go" << endl; }
+};
+
+int main()
+{
+    // shared_ptr<People> wp; // use_count 증가
+    weak_ptr<People> wp; // 증가 x
+
+    // {
+        shared_ptr<People> sp(new People);
+        wp = sp;
+        cout << sp.use_count() << endl;
+    // } // 대상 객체 파괴
+
+    if (wp.expired())
+        cout << "destroy" << endl;
+    else {
+        cout << "exist" << endl;
+
+        // weak_ptr을 사용해서는 대상객체에 접근할 수 없음
+        // wp->Go(); // error
+
+        // weak_ptr 을 다시 shared_ptr로 만들어야 함
+        shared_ptr<People> sp2 = wp.lock();
+
+        if( sp2 )
+            sp2->Go();
+    }
+        
+}
+```
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct People
+{
+    string name;
+    weak_ptr<People> bf;
+    People(string s) : name(s) {}
+    ~People() { cout << "~People :" << name << endl; }
+};
+
+int main()
+{
+    shared_ptr<People> p1( new People("KIM"));
+    // {
+    shared_ptr<People> p2( new People("LEE"));
+
+    p1->bf = p2;
+    p2->bf = p1;
+    // } // p2 자원 파괴
+
+    // if (p1->bf.expired()) {}
+
+    shared_ptr<People> sp2 = p1->bf.lock();
+    if (sp2)
+        cout << sp2->name << endl;
+    else
+        cout << "destory" << endl;
+}
+```
+
 ## 참고
 codenuri 강석민 강사 강의 내용기반으로 정리한 내용입니다.  
 [코드누리](https://github.com/codenuri)  
