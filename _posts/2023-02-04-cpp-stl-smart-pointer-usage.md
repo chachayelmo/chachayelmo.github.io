@@ -471,6 +471,144 @@ int main()
 }
 ```
 
+## 4. unique_ptr
+
+- Raw Pointer와 동일한 크기를 가짐
+- 단, 삭제자 변경 시 크기가 커질 수 있음
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct People
+{
+    string name;
+    weak_ptr<People> bf;
+    People(string s="") : name(s) {}
+    ~People() { cout << "~People :" << name << endl; }
+    void Go() { cout << "Go" << endl; }
+};
+
+int main()
+{
+    shared_ptr<People> sp1(new People);
+    shared_ptr<People> sp2 = sp1; // ok. use count 증가
+
+    unique_ptr<People> up1(new People); // 자원 독점
+    // unique_ptr<People> up2 = up1; // error
+    cout << sizeof(sp1) << endl; // 16
+    cout << sizeof(up1) << endl; // 8
+}
+```
+
+- 복사는 안되지만 이동은 가능
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct People
+{
+    string name;
+    weak_ptr<People> bf;
+    People(string s="") : name(s) {}
+    ~People() { cout << "~People :" << name << endl; }
+    void Go() { cout << "Go" << endl; }
+};
+
+int main()
+{
+    unique_ptr<People> up1(new People); // 자원 독점
+    // unique_ptr<People> up2 = up1; // error
+
+    unique_ptr<People> up2 = move(up1); // ok
+}
+```
+
+- 삭제자 변경 가능
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct Deleter
+{
+    void operator()(int* p) const
+    {
+        delete p;
+    }
+};
+
+int main()
+{
+    // 1. 함수 객체 사용
+    // unique_ptr<int, Deleter> up1(new int);
+
+    // 2. 함수 포인터 사용
+    // unique_ptr<int, void(*)(int*)> up1(new int, foo);
+
+    // 3. 람다 표현식 사용
+    auto f = [](int* p) { delete p; cout << "lambda" << endl; };
+
+    unique_ptr<int, decltype(f)> up(new int, f);
+
+    // 4. 배열을 관리하고 싶을 때, C++11 부터 가능
+    unique_ptr<int[]]> up(new int[10]);
+}
+```
+
+### 4.1. shared_ptr 과 unique_ptr 의 호환성
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    shared_ptr<int> sp(new int);
+    unique_ptr<int> up(new int);
+    
+    shared_ptr<int> sp1 = up;       // error
+    shared_ptr<int> sp2 = move(up); // ok
+
+    unique_ptr<int> up1 = sp;       // error
+    unique_ptr<int> up2 = move(sp); // error
+}
+```
+
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+class Shape {};
+class Rect : public Shape {};
+class Circle : public Shape {};
+
+unique_ptr<Shape> CreateShape(int type)
+{
+    unique_ptr<Shape> p;
+    switch(type)
+    {
+        case 1: p.reset(new Rect); break;
+        case 2: p.reset(new Circle); break;
+    }
+    return p;
+}
+
+int main()
+{
+    // CreateShape는 unique_ptr로 만들어야
+    // 받는 입장에서 unique/shared ptr 둘 다 사용 가능
+    unique_ptr<Shape> p1 = CreateShape(1);
+    shared_ptr<Shape> p2 = CreateShape(2);
+}
+```
+
 ## 참고
 codenuri 강석민 강사 강의 내용기반으로 정리한 내용입니다.  
 [코드누리](https://github.com/codenuri)  
