@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] 프로그래밍이란? - 프로세스, 컨텍스트 스위칭"
+title:  "[OS] 프로세스(Process) 와 컨텍스트 스위칭(Context switching)"
 excerpt: "프로그래밍에 대해 알아보기 2번째"
 
 categories:
   - OS
 tags:
-  - [Programming, Process, Ipc]
+  - [프로그래밍, 프로세스, 컨텍스트, 스위칭, Programming, Process, Ipc]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-15
 last_modified_at: 2022-09-27
 ---

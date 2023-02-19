@@ -1,16 +1,18 @@
 ---
 published: true
-title:  "[GitHub Page] 깃허브 페이지 사용법"
+title:  "[Github Page] 깃허브 페이지 사용법"
 excerpt: "깃허브 페이지 만들기 A to Z"
-
 categories:
   - Etc
 tags:
-  - [GitHub, Etc, Minimal-mistakes]
-
+  - [깃허브, 페이지, GitHub, Etc, Minimal-mistakes]
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-09-12
 last_modified_at: 2022-09-14
 ---

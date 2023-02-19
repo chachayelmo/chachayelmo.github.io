@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] 객체지향이란? OOP"
-excerpt: "C++에 대해 알아보기, this"
+title:  "[OS] 객체지향(OOP) 이란? "
+excerpt: "객체지향에 대해 알아보기, OOP"
 
 categories:
   - OS
 tags:
-  - [OS, Oop]
+  - [운영체제, 객체지향, OS, Oop]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-30
 last_modified_at: 2022-09-30
 ---

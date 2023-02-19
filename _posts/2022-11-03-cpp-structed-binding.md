@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ Structured binding"
+title:  "[C++] 바인딩(Structured binding)"
 excerpt: "C++에 대해 알아보기, 바인딩"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, StructuredBinding]
+  - [바인딩, C++, Cpp, StructuredBinding]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-03
 last_modified_at: 2022-11-03
 ---

@@ -1,12 +1,12 @@
 ---
 published: true
-title:  "[Programming] C++ override"
+title:  "[C++] 오버라이드(override)"
 excerpt: "C++에 대해 알아보기, 오버라이드"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, override]
+  - [오버라이드, C++, Cpp, override]
 
 toc: true
 toc_sticky: true

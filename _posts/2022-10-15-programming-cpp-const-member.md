@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ Const member function"
+title:  "[C++] 상수 멤버 함수(Const member function)"
 excerpt: "C++에 대해 알아보기, Const member"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Const]
+  - [상수, 멤버, 함수, C++, Cpp, Const]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-15
 last_modified_at: 2022-10-15
 ---

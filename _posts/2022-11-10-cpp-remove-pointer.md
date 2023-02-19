@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ Remove pointer"
+title:  "[C++] Remove pointer"
 excerpt: "C++에 대해 알아보기, Remove pointer"
 
 categories:
@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-10
 last_modified_at: 2022-11-10
 ---

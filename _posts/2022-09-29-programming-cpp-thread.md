@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ thread"
+title:  "[C++] 스레드(thread) 함수"
 excerpt: "C++에 대해 알아보기, thread 함수"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Thread]
+  - [스레드, 함수, STL, C++, Cpp, Thread]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-30
 last_modified_at: 2022-09-30
 ---

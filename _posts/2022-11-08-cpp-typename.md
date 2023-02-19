@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ typename"
+title:  "[C++] 타입네임(typename)"
 excerpt: "C++에 대해 알아보기, typename"
 
 categories:

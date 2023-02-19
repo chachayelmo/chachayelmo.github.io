@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ Lazy instantiation"
+title:  "[C++] 지연된 인스턴스화(Lazy instantiation)"
 excerpt: "C++에 대해 알아보기, Lazy instantiation"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, LazyInstantiation]
+  - [지연된, 인스턴스화, C++, Cpp, LazyInstantiation]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-07
 last_modified_at: 2022-11-07
 ---

@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ Template"
+title:  "[C++] 템플릿(Template)"
 excerpt: "C++에 대해 알아보기, Template basic"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Template]
+  - [템플릿, C++, Cpp, Template]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-07
 last_modified_at: 2022-11-07
 ---

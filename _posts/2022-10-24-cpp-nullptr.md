@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ nullptr"
+title:  "[C++] 널포인터(nullptr)"
 excerpt: "C++에 대해 알아보기, nullptr"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Nullptr]
+  - [널포인터, C++, Cpp, Nullptr]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-24
 last_modified_at: 2022-10-24
 ---

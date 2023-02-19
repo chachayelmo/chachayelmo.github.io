@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ Template Specialization"
+title:  "[C++] 템플릿 특수화(Template Specialization)"
 excerpt: "C++에 대해 알아보기, 템플릿 특수화"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Template, Specialization]
+  - [템플릿, 특수화, C++, Cpp, Template, Specialization]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-08
 last_modified_at: 2022-11-08
 ---

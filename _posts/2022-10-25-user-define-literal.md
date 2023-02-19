@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ User defined literal"
+title:  "[C++] 사용자 정의 리터럴(User defined literal)"
 excerpt: "C++에 대해 알아보기, User defined literal"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, UserDefinedLiteral]
+  - [사용자, 정의, 리터럴, C++, Cpp, UserDefinedLiteral]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-26
 last_modified_at: 2022-10-26
 ---

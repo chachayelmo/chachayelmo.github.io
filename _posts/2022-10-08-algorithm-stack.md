@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] 자료구조 - Stack"
+title:  "[Data structure] 자료구조 - 스택(Stack)"
 excerpt: "다양한 자료구조에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DataStructure, stack]
+  - [자료구조, 스택, DataStructure, stack]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-11
 last_modified_at: 2022-10-11
 ---

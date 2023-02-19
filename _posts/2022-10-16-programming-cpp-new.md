@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ New"
+title:  "[C++] 생성 New"
 excerpt: "C++에 대해 알아보기, New"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, New, PlacementNew]
+  - [생성, C++, Cpp, New, PlacementNew]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-16
 last_modified_at: 2022-10-16
 ---

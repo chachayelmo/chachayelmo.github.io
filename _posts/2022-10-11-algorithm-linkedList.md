@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] 자료구조 - LinkedList"
+title:  "[Data structure] 자료구조 - 연결리스트(LinkedList)"
 excerpt: "다양한 자료구조에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DataStructure, LinkedList]
+  - [자료구조, 연결리스트, 링크드리스트, DataStructure, LinkedList]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-12
 last_modified_at: 2022-10-12
 ---

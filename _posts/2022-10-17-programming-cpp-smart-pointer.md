@@ -1,16 +1,18 @@
 ---
 published: true
-title:  "[Programming] C++ Smart Pointer"
+title:  "[C++] 스마트포인터(Smart Pointer)"
 excerpt: "C++에 대해 알아보기, Smart Pointer"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, SmartPointer]
+  - [스마트포인터, C++, Cpp, SmartPointer]
 
 toc: true
 toc_sticky: true
- 
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-17
 last_modified_at: 2022-10-17
 ---

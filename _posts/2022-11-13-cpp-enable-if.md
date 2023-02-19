@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ enable_if"
+title:  "[C++] enable_if"
 excerpt: "C++에 대해 알아보기, enable_if"
 
 categories:
@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-13
 last_modified_at: 2022-11-13
 ---

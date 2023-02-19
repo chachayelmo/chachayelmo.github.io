@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ Range for"
+title:  "[C++] Range for"
 excerpt: "C++에 대해 알아보기, Range for"
 
 categories:
@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-24
 last_modified_at: 2022-10-24
 ---

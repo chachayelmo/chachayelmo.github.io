@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] Block vs Non-Block & Sync vs Async 란?"
+title:  "[OS] 블록(Block), 논블록(Non-Block), 싱크(Sync) 와 어싱크(Async) 란?"
 excerpt: "프로그래밍에 대해 알아보기 5번째, 블록, 논블록, 싱크, 어싱크"
 
 categories:
   - OS
 tags:
-  - [Programming, Block, NonBlock, Sync, Async]
+  - [운영체제, 블록, 논블록, 싱크, 어싱크, Block, NonBlock, Sync, Async]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-29
 last_modified_at: 2022-10-03
 ---

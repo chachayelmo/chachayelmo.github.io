@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ this call"
+title:  "[C++] 디스 콜(this call)"
 excerpt: "C++에 대해 알아보기, this"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, This]
+  - [디스, 콜, Call, C++, Cpp, This]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-30
 last_modified_at: 2022-09-30
 ---

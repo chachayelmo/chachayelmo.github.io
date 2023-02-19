@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] Thread - 스레드 동기화"
+title:  "[OS] 스레드(Thread) 동기화(Synchronization)"
 excerpt: "프로그래밍에 대해 알아보기 5번째, 스레드 동기화"
 
 categories:
   - OS
 tags:
-  - [Programming, Thread, Sync]
+  - [운영체제, 스레드, 동기화, Programming, Thread, Sync]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-28
 last_modified_at: 2022-09-28
 ---

@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ Suffix return"
+title:  "[C++] 후위 반환(Suffix return)"
 excerpt: "C++에 대해 알아보기, Suffix return"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Suffix, Return]
+  - [후위반환, C++, Cpp, Suffix, Return]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-05
 last_modified_at: 2022-11-05
 ---

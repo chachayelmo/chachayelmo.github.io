@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] 가상메모리 - Virtual Memory"
+title:  "[OS] 가상메모리(Virtual Memory)"
 excerpt: "가상메모리에 대해 알아보기"
 
 categories:
   - OS
 tags:
-  - [OS, Memory, Virtual]
+  - [운영체제, 가상메모리, 메모리, OS, Memory, Virtual]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-31
 last_modified_at: 2022-09-31
 ---

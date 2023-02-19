@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ Using"
+title:  "[C++] typedef 와 using"
 excerpt: "C++에 대해 알아보기, Using"
 
 categories:
@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-21
 last_modified_at: 2022-10-21
 ---

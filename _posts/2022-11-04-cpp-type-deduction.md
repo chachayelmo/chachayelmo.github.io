@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ Type deduction"
+title:  "[C++] 타입 추론/디덕션(Type deduction)"
 excerpt: "C++에 대해 알아보기, 타입 추론 - template, auto"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, TypeDeduction, Auto]
+  - [타입추론, 타입, 추론, C++, Cpp, TypeDeduction, Auto]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-04
 last_modified_at: 2022-11-04
 ---

@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ Begin/End"
+title:  "[C++] 일반함수 Begin/End"
 excerpt: "C++에 대해 알아보기, Begin/End"
 
 categories:
@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-22
 last_modified_at: 2022-10-22
 ---

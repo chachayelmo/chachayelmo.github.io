@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] Data structure and Algorithm"
+title:  "데이터구조(Data structure) 와 알고리즘(Algorithm)"
 excerpt: "데이터 구조와 알고리즘에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DataStructure, Algorithm]
+  - [데이터구조, 알고리즘, DataStructure, Algorithm]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-07
 last_modified_at: 2022-10-07
 ---

@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] 자료구조 - Queue"
+title:  "[Data structure] 자료구조 - 큐(Queue)"
 excerpt: "다양한 자료구조에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DataStructure, Queue]
+  - [자료구조, 큐, DataStructure, Queue]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-10
 last_modified_at: 2022-10-10
 ---

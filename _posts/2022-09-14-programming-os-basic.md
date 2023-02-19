@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] 프로그래밍이란?"
+title:  "[OS] 프로그래밍이란?"
 excerpt: "프로그래밍에 대한 기초에 대해 알아보기"
 
 categories:
   - OS
 tags:
-  - [Programming, OS]
+  - [프로그래밍, 운영체제, Programming, OS]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-14
 last_modified_at: 2022-09-27
 ---

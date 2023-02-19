@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] C++ constexpr"
+title:  "[C++] 컴파일 시간 상수(constexpr)"
 excerpt: "C++에 대해 알아보기, constexpr"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Constexpr]
+  - [컴파일, 상수, C++, Cpp, Constexpr]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-06
 last_modified_at: 2022-11-06
 ---

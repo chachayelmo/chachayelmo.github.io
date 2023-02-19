@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ SFINAE"
+title:  "[C++] SFINAE"
 excerpt: "C++에 대해 알아보기, SFINAE"
 
 categories:
@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-11-11
 last_modified_at: 2022-11-11
 ---

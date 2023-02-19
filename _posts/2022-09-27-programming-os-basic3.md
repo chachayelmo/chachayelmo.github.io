@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] IPC 인터프로세스커뮤니케이션"
+title:  "[OS] 프로세스 간 통신(IPC)"
 excerpt: "프로그래밍에 대해 알아보기 3번째, IPC 방법들"
 
 categories:
   - OS
 tags:
-  - [Programming, Ipc, OS]
+  - [프로세스, 통신, Programming, Ipc, OS]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-09-27
 last_modified_at: 2022-09-28
 ---

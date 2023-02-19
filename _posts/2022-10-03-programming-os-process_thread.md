@@ -1,16 +1,19 @@
 ---
 published: true
-title:  "[Programming] Process & thread"
+title:  "[OS] 프로세스(Process)와 스레드(thread)"
 excerpt: "프로세스와 스레드에 대해 알아보기"
 
 categories:
   - OS
 tags:
-  - [OS, Process, Thread]
+  - [프로세스, 스레드, OS, Process, Thread]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
 date: 2022-10-04
 last_modified_at: 2022-10-04
 ---
