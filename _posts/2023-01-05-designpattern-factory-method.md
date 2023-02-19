@@ -18,11 +18,12 @@ last_modified_at: 2023-01-06
 ## 1. Factory method pattern
 
 - 새로운 클래스가 추가되어도 기존 코드의 변경 없이 확장하기 위한 디자인 패턴
-- 객체를 생성할 때 어떤 클래스의 인스턴스를 만들지를 서브 클래스에게 위임
+- 객체를 생성할 때 어떤 클래스의 인스턴스를 만들 건지는 서브클래스에게 위임
 
 ### 1.1. 의도
 
-- 부모 클래스에서 객체들을 생성할 수 있는 인터페이스를 제공하지만, 자식 클래스들이 생성될 객체들의 유형을 변경할 수 있도록 하는 생성 패턴
+- 부모클래스에서 객체를 생성할 수 있는 인터페이스를 제공하고,
+- 서브클래스에서 생성될 객체들의 유형을 변경할 수 있도록 하는 생성 패턴
 
 ### 1.2. 문제
 
@@ -37,7 +38,7 @@ last_modified_at: 2023-01-06
 
 ![Untitled](https://user-images.githubusercontent.com/23397039/210953543-f046479e-8003-4ed0-9459-2f87b912b711.png){: .align-center}
 
-- 약간의 제한으로 자식 클래스들은 다른 유형의 제품들을 해당 제품들이 공통 기초 클래스 또는 공통 인터페이스가 있는 경우에만 return이 가능
+- 약간의 제한으로 서브클래스들은 다른 유형의 제품들을 해당 제품들이 공통 인터페이스가 있는 경우에만 return이 가능
 
 ![Untitled](https://user-images.githubusercontent.com/23397039/210953653-3ac083be-e495-4c76-b4bf-2d8c727ea5ea.png){: .align-center}
 
@@ -45,20 +46,26 @@ last_modified_at: 2023-01-06
 
 ![image](https://user-images.githubusercontent.com/23397039/210953958-9975d549-3a72-49ec-bcc1-895bf3d0b300.png){: .align-center}
 
-- Creator : 새로운 Product 객체들을 반환하는 팩토리 메소드를 선언, 팩토리 메소드의 return 은 제품 인터페이스와 일치해야 함
-- Product : 인터페이스를 선언하여 생성자와 자식 클래스들이 생성할 수 있는 객체의 공통된 부분
-- ConcreteCreator : Creator의 팩토리 메소드를 오버라이드하여 각각의 제품을 return 하도록 함
-- ConcreteProduct : 인터페이스의 구현부
+- Creator
+  - 새로운 Product 객체들을 반환하는 팩토리 메소드를 선언
+  - 팩토리 메소드의 return 은 Product 인터페이스와 일치해야 함
+- ConcreteCreator
+  - Creator의 팩토리 메소드를 오버라이드하여 각각의 제품을 return 하도록 함
+- Product
+  - 인터페이스를 선언하여 생성자와 자식 클래스들이 생성할 수 있는 객체의 공통된 부분
+- ConcreteProduct
+  - Product 인터페이스의 구현부
 
 ## 3. 사용
 
-1. 팩토리 메소드는 우리의 코드가 함께 동작해야 하는 객체들의 정확한 유형들과 의존관계들을 미리 모르는 경우에 사용
+1. 우리의 코드가 함께 동작해야 하는 객체들의 정확한 유형들과 의존관계들을 미리 모르는 경우에 사용
     - Product 생성 코드와 실제 사용하는 코드를 분리, 그러면 Product 생성자 코드를 나머지 코드와 독립적으로 확장하기가 쉬워짐
+
 2. Library 또는 framework 의 사용자들에게 내부 컴포넌트들을 확장하는 방법을 제공하고 싶을 때 사용
     - 상속은 Library 나 framework의 default 행동을 확장하는 가장 쉬운 방법임
+
 3. 기존 객체들을 매번 재구축하는 대신 이들을 재사용하여 system resource 를 절약하고 싶을 때 사용
     - 코드의 중복사용을 줄일 수 있음
-    
 
 ## 4. Pros and Cons
 
@@ -67,7 +74,7 @@ last_modified_at: 2023-01-06
   - Single Responsibility Principle, Product 생성 코드를 한 곳으로 모을 수 있음
   - Open/Closed Principle, 기존 client 코드를 유지하면서 새로운 타입의 Product를 추가할 수 있음
 ### 4.2. Cons
-  - 패턴을 구현하기 위해 많은 서브클래스를 도입해야 하므로 코드가 더 복잡해질 수 있음
+  - Code complexity, 패턴을 구현하기 위해 많은 서브클래스를 도입해야 하므로 코드가 더 복잡해질 수 있음
 
 ## 5. 코드로 알아보기
 
@@ -117,6 +124,7 @@ public:
 // ConcreteCreator 구현
 class ConcreteCreator1 : public Creator {
 public:
+  // ConcreteProduct1 에 대한 new
   Product* FactoryMethod() const override {
     return new ConcreteProduct1();
   }
@@ -125,6 +133,7 @@ public:
 // ConcreteCreator 구현
 class ConcreteCreator2 : public Creator {
 public:
+  // ConcreteProduct2 에 대한 new
   Product* FactoryMethod() const override {
     return new ConcreteProduct2();
   }
