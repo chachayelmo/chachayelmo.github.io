@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ move/forward 차이"
+title:  "[C++] move/forward 함수 차이"
 excerpt: "C++에 대해 알아보기, move, forward 차이"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-29
 last_modified_at: 2022-12-29
 ---

@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ 초기화"
+title:  "[C++] 초기화(Initialization)"
 excerpt: "C++에 대해 알아보기, Initialization"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-11-27
 last_modified_at: 2022-11-27
 ---

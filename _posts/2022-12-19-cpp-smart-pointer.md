@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ 스마트포인터 원리"
+title:  "[C++] 스마트포인터(Smart pointer) 원리"
 excerpt: "C++에 대해 알아보기, SmartPointer"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-19
 last_modified_at: 2022-12-19
 ---

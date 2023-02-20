@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] 파일 디스크립터"
+title:  "[OS] 파일 디스크립터(File descriptor)"
 excerpt: "프로그래밍에 대해 알아보기, File descriptor"
 
 categories:
   - OS
 tags:
-  - [Programming, Linux, FileDescriptor]
+  - [파일디스크립터, Programming, Linux, FileDescriptor]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-08
 last_modified_at: 2022-12-08
 ---

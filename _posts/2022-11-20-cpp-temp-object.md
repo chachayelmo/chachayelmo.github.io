@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] C++ 임시객체"
+title:  "[C++] 임시객체(Temporary object)"
 excerpt: "C++에 대해 알아보기, temporary object"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, TemporaryObject, Object]
+  - [임시객체, C++, Cpp, TemporaryObject, Object]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-11-20
 last_modified_at: 2022-11-20
 ---

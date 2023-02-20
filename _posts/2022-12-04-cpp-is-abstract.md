@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ is_abstract"
+title:  "[C++] is_abstract"
 excerpt: "C++에 대해 알아보기, is_abstract"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-04
 last_modified_at: 2022-12-04
 ---

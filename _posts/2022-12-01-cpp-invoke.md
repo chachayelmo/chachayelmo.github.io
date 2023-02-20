@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ invoke"
+title:  "[C++] 콜함수 (invoke)"
 excerpt: "C++에 대해 알아보기, invoke"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-01
 last_modified_at: 2022-12-01
 ---

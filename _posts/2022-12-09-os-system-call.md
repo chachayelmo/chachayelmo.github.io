@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] system call 함수"
+title:  "[OS] system call 함수"
 excerpt: "프로그래밍에 대해 알아보기, system_call"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-09
 last_modified_at: 2022-12-09
 ---

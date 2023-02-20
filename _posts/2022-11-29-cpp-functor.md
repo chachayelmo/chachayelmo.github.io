@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ Functor"
+title:  "[C++] 함수객체(Functor)"
 excerpt: "C++에 대해 알아보기, Functor"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-11-30
 last_modified_at: 2022-11-30
 ---

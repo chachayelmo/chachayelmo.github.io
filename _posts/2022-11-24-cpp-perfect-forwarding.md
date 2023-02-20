@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] C++ Perfect forwarding"
+title:  "[C++] 완벽한 전달자(Perfect forwarding)"
 excerpt: "C++에 대해 알아보기, Perfect forwarding"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, PerfectForwarding]
+  - [퍼펙트포워딩, 완벽한전달자, C++, Cpp, PerfectForwarding]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-11-23
 last_modified_at: 2022-11-23
 ---

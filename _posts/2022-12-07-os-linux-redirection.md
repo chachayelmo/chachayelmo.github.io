@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] Linux redirection"
+title:  "[OS] Linux 리다이렉션(redirection)"
 excerpt: "프로그래밍에 대해 알아보기, redirection"
 
 categories:
   - OS
 tags:
-  - [Programming, Linux, Redirection]
+  - [리눅스, 리다이렉션, Programming, Linux, Redirection]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-08
 last_modified_at: 2022-12-08
 ---

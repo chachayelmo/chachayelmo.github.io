@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] C++ 가변인자 템플릿"
+title:  "[C++] 가변인자 템플릿"
 excerpt: "C++에 대해 알아보기, Variadic template"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, VariadicTemplate]
+  - [가변인자, 템플릿, C++, Cpp, VariadicTemplate]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-11-21
 last_modified_at: 2022-11-21
 ---

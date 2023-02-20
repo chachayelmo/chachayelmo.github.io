@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] C++ 반복자 카테고리"
+title:  "[C++] 반복자(iterator) 카테고리"
 excerpt: "C++에 대해 알아보기, iterator categorty"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Iterator]
+  - [반복자, 카테고리, C++, Cpp, Iterator]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-12
 last_modified_at: 2022-12-12
 ---

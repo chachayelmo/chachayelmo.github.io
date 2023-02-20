@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] 완전 탐색(Bruth Force)"
+title:  "[알고리즘] 완전 탐색(Bruth Force)"
 excerpt: "알고리즘 완전 탐색"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-11-22
 last_modified_at: 2022-12-04
 ---

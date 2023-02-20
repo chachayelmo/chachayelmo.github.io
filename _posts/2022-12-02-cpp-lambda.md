@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ 람다표현식"
+title:  "[C++] 람다표현식(Lambda expression)"
 excerpt: "C++에 대해 알아보기, lambda"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2022-12-02
 last_modified_at: 2022-12-02
 ---
