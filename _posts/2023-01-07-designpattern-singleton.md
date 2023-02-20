@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Design Pattern] Creational - Singleton in C++"
+title:  "[Design Pattern] 싱글톤 패턴(Singleton) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DesignPattern, Singleton, Creational, Pattern]
+  - [싱글톤, 디자인패턴, DesignPattern, Singleton, Creational, Pattern]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-07
 last_modified_at: 2023-01-07
 ---

@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Design Pattern] 디자인 패턴"
+title:  "[Design Pattern] 디자인 패턴이란?"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DesignPattern, GoF]
+  - [DesignPattern, GoF, 디자인패턴]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-03
 last_modified_at: 2023-01-03
 ---

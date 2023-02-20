@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Design Pattern] Creational - Prototype pattern in C++"
+title:  "[Design Pattern] 프로토타입 패턴(Prototype pattern) in C++"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DesignPattern, Prototype, Creational, Pattern]
+  - [프로토타입, 디자인패턴DesignPattern, Prototype, Creational, Pattern]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-06
 last_modified_at: 2023-01-06
 ---

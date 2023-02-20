@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Design Pattern] Creational - Abstract Factory pattern in C++"
+title:  "[Design Pattern] 추상팩토리 패턴(Abstract Factory pattern) in C++"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DesignPattern, AbstractFactory, Creational, Pattern]
+  - [추상팩토리, 디자인패턴, DesignPattern, AbstractFactory, Creational, Pattern]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-04
 last_modified_at: 2023-01-04
 ---
