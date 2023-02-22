@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-10
 last_modified_at: 2023-01-10
 ---
@@ -49,10 +53,11 @@ last_modified_at: 2023-01-10
 
 ### 1.4. 추상화와 구현
 
-- 추상화 (인터페이스)는 일부 개체에 대한 상위 레이어로서 자체적으로 작업을 수행해서는 안되며, 작업들은 구현 레이어(플랫폼)에 위임해야 됨
+- 추상화 (인터페이스)는 일부 개체에 대한 상위 레이어로서 자체적으로 작업을 수행해서는 안되며,
+- 작업들은 구현 레이어(플랫폼)에 위임해야 됨
 - 이는 프로그래밍 언어의 인터페이스나 추상 클래스를 의미하는 것이 아님
 - 예시
-    - 실제 앱을 예로 들면 추상화는 그래픽 사용자 인터페이스이며 구현은 그래픽 사용자 인터페이스 레이어가 사용자와 상호작용하여 결과로 호출하는 배경(API)임
+    - 앱에서 추상화는 그래픽 사용자 인터페이스이며 구현은 그래픽 사용자 인터페이스 레이어가 사용자와 상호작용하여 결과로 호출하는 배경(API)임
     - 이러한 앱은 두 가지 독립적인 방향으로 확장이 가능
         - 다른 여러가지의 그래픽 사용자 인터페이스를 가짐(예를 들어 일반 고객, 관리자용 인터페이스 등)
         - 여러 다른 API를 지원(Mac, Windows, Linux 등)
@@ -70,24 +75,29 @@ last_modified_at: 2023-01-10
 
 ![image](https://user-images.githubusercontent.com/23397039/211251003-737f8f1f-9a21-4a1f-ba5c-c606245ffcf2.png){: .align-center}
 
-- Abstraction : 상위 수준의 제어를 제공하며 Implementation 객체에서 실제 작업을 수행
-- Implementation : 모든 Concrete Implementation 객체들의 공통적인 인터페이스를 선언하며 추상화는 여기에 선언된 메소드들을 통해서만 소통이 가능
-- Concrete Implementation : 플랫폼별 맞충형 코드가 포함
-- Refined Abstraction : Abstraction에서 인터페이스를 확장하거나 변형이 가능
-- Client : 추상화 객체를 구현 객체들 중 하나와 연결하는 역할을 해야 됨
+- Abstraction
+  - 상위 수준의 제어를 제공하며 Implementation 객체에서 실제 작업을 수행
+- Implementation
+  - 모든 Concrete Implementation 객체들의 공통적인 인터페이스를 선언하며 추상화는 여기에 선언된 메소드들을 통해서만 소통이 가능
+- Concrete Implementation
+  - 플랫폼별 맞충형 코드가 포함
+- Refined Abstraction
+  - Abstraction에서 인터페이스를 확장하거나 변형이 가능
+- Client
+  - 추상화 객체를 구현 객체들 중 하나와 연결하는 역할을 해야 됨
 
 ## 3. 사용
 
-- 어떤 기능의 여러 변형을 가진 monolithic 클래스로 나누려고 할 때 사용( 예를 들어 클래스가 다양한 데이터베이스 서버들과 동작하는 경우)
+1. 어떤 기능의 여러 변형을 가진 monolithic 클래스로 나누려고 할 때 사용(예를 들어 클래스가 다양한 데이터베이스 서버들과 동작하는 경우)
     - 문제
         - monolithic 클래스가 커질수록 동작 방식을 파악하기 어려워지고 변경하는데 오랜 시간이 걸림
     - 해결
         - 따라서 브릿지 패턴을 사용하여 monolithic 클래스를 여러 클래스 계층구조로 나눠서 각각의 클래스들은 독립적으로 변경할 수 있음
         - 코드의 유지관리를 단순화 및 기존 코드 손상을 최소화
-- 여러 독립 차원에서 클래스를 확장해야할 때 사용
+2. 여러 독립 차원에서 클래스를 확장해야 할 때 사용
     - 각 차원에 대해 별도의 클래스 계층구조를 추출하는 것이 좋음
     - 원래 클래스는 모든 작업을 자체적으로 수행하는 대신 추출된 계층구조들에 속한 객체들에 관련 작업들을 위임
-- 런타임에 구현을 전환할 수 있어야 할 때에 사용
+3. 런타임에 구현을 전환할 수 있어야 할 때에 사용
     - 추상화 내부의 구현 객체를 바꿀 수 있으며, 그렇게 하기 위해 필드에 새로운 값을 할당하기만 하면 됨
 
 ## 4. Pros and Cons
@@ -109,10 +119,11 @@ last_modified_at: 2023-01-10
 #include <iostream>
 #include <string>
 
-// 구현의 공통 인터페이스
+// 구현의 인터페이스
 class Implementation {
 public:
   virtual ~Implementation() {}
+  // 순수가상함수로 서브클래스에 구현
   virtual std::string OperationImplementation() const = 0;
 };
 
@@ -123,7 +134,7 @@ public:
     return "ConcreteImplementationA: Here's the result on the platform A.\n";
   }
 };
-// B
+// 플랫폼 B
 class ConcreteImplementationB : public Implementation {
 public:
   std::string OperationImplementation() const override {
@@ -134,16 +145,18 @@ public:
 // 제어를 위한 추상화 인터페이스
 class Abstraction {
 protected:
+  // implementation을 필드로 가짐
   Implementation* implementation_;
 
 public:
-  // Implementation 공통 인터페이스를 포함
+  // 생성자에서 Implementation을 가지고 객체 생성
   Abstraction(Implementation* implementation) : implementation_(implementation) {
   }
 
   virtual ~Abstraction() {}
 
   virtual std::string Operation() const {
+    // 동작에서 implementation 의 함수를 사용
     return "Abstraction: Base operation with:\n" +
            this->implementation_->OperationImplementation();
   }
@@ -160,7 +173,7 @@ public:
   }
 };
 
-// 클라이언트
+// 클라이언트는 추상화 객체만으로 핸들링
 void ClientCode(const Abstraction& abstraction) {
   // ...
   std::cout << abstraction.Operation();
@@ -168,6 +181,7 @@ void ClientCode(const Abstraction& abstraction) {
 }
 
 int main() {
+  // 플랫폼 A
   Implementation* implementation = new ConcreteImplementationA;
   Abstraction* abstraction = new Abstraction(implementation);
   ClientCode(*abstraction);
@@ -175,6 +189,7 @@ int main() {
   delete implementation;
   delete abstraction;
 
+  // 플랫폼 B
   implementation = new ConcreteImplementationB;
   abstraction = new ExtendedAbstraction(implementation);
   ClientCode(*abstraction);
