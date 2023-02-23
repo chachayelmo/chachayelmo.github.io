@@ -1,12 +1,12 @@
 ---
 published: true
-title:  "[Design Pattern] Structural - Bridge in C++"
+title:  "[Design Pattern] 브릿지 패턴(Bridge) in C++"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DesignPattern, Bridge, Structural, Pattern]
+  - [브릿지, DesignPattern, Bridge, Structural, Pattern]
 
 toc: true
 toc_sticky: true

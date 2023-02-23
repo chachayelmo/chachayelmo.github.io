@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Design Pattern] Structural - Composite in C++"
+title:  "[Design Pattern] 합성 패턴(Composite) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DesignPattern, Composite, Structural, Pattern]
+  - [합성, DesignPattern, Composite, Structural, Pattern]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-11
 last_modified_at: 2023-01-11
 ---
@@ -24,23 +28,24 @@ last_modified_at: 2023-01-11
 
 ### 1.1. 의도
 
-- Composite 패턴은 객체들을 트리 구조들로 구성한 후, 이러한 구조들과 개별 객체들처럼 작업할 수 있도록 하는 구조 패턴
+- Composite 패턴은 객체들을 트리 구조로 구성한 후, 이러한 구조들과 개별 객체들처럼 작업할 수 있도록 하는 구조 패턴
 
 ### 1.2. 문제
 
-- 앱의 핵심 모델이 트리로 표현될 수 있을 때만 사용해야 함!
+- 앱의 핵심 모델이 **트리로 표현될 수 있을 때만 사용**해야 함!
 - 예를 들어 제품과 상자라는 두 가지 유형의 객체들이 있다고 했을 때,
-- 상자에는 여러 개의 제품과 여러 개의 작은 상자들이 포함될 수 있고, 작은 상자에도 이러한 제품들과 상자들 등을 더 담을 수 있음
+- 상자에는 여러 개의 제품과 작은 상자들이 포함될 수 있고, 작은 상자에도 이러한 제품들과 상자들 등을 추가로 담을 수 있음
 - 주문 시스템을 만들기로 가정했을 때 주문의 총가격을 계산하려면?
 
 ![image](https://user-images.githubusercontent.com/23397039/211258805-c712790e-9cd9-44c3-9a31-783ad962f2cf.png){: .align-center}
 
 - 모든 상자를 열어본 후 내부 모든 제품을 보고 가격의 합계를 계산하는 것인데 현실 세계에서는 이러한 접근 방법이 가능하나,
-- 프로그램에서 이 작업은 덧셈 루프를 실행하는 것만큼 간단하지 않음, 왜냐하면 덧셈 루프를 실행하기 위해 진행 중인 제품들 및 상자들의 클래스들, 상자의 중첩 및 기타 세부 사항들을 미리 알고 있어야 하기 때문
+- 프로그램에서 이 작업은 덧셈 루프를 실행하는 것만큼 간단하지 않음
+- 왜냐하면 덧셈 루프를 실행하기 위해 진행 중인 제품들 및 상자들의 클래스들, 상자의 중첩 및 기타 세부 사항들을 미리 알고 있어야 하기 때문
 
 ### 1.3. 해결
 
-- Composite 패턴은 총가격을 계산하는 메소드를 선언하는 공통 인터페이스를 통해 제품들 및 상자들 클래스들과 작업을 제안
+- Composite 패턴은 총 가격을 계산하는 메소드를 선언하는 공통 인터페이스를 통해 제품들 및 상자들 클래스들과 작업
 - 메소드는 제품의 경우 단순히 제품 가격을 반환하며, 상자의 경우 상자에 포함된 각 항목을 살펴보고 가격을 확인한 뒤 해당 상자의 총가격을 반환
 
 ![image](https://user-images.githubusercontent.com/23397039/211258843-fd3cd077-f2cd-4604-96cf-a410795b94a0.png){: .align-center}
@@ -51,18 +56,21 @@ last_modified_at: 2023-01-11
 
 ![image](https://user-images.githubusercontent.com/23397039/211258876-ba54d272-231d-49ca-af2b-b01507eeece5.png){: .align-center}
 
-- Component : 인터페이스로 트리의 단순/복잡한 요소의 공통적인 작업을 설명
-- Leaf : 트리의 기본 요소이며 더이상 하위 요소가 없음, 실제 작업들을 수행
+- Component
+    - 인터페이스로 트리의 단순/복잡한 요소의 공통적인 작업을 설명
+- Leaf
+    - 트리의 기본 요소이며 더이상 하위 요소가 없음, 실제 작업들을 수행
 - Composite
     - Component 인터페이스를 통해서만 Leaf 들과 함께 동작하며 하위 요소들의 클래스를 알지 못함
     - 요청을 받으면 작업을 Leaf에 위임하고 중간 결과들을 처리한 다음 최종 결과를 클라이언트에게 반환
-- Client : Component 인터페이스를 통해 모든 요소들과 동작
+- Client
+    - Component 인터페이스를 통해 모든 요소들과 동작
 
 ## 3. 사용
 
-- 트리와 같은 객체 구조를 구현해야 할 때 사용
+1. 트리와 같은 객체 구조를 구현해야 할 때 사용
     - 공통 인터페이스를 공유하는 2 가지 기본 요소인 Leaf와 Composite를 제공
-- 클라이언트 코드가 Leaf와 Composite를 모두 균일하게 처리하고 싶을 때 사용
+2. 클라이언트 코드가 Leaf와 Composite를 모두 균일하게 처리하고 싶을 때 사용
     - 패턴에 의해 정의된 모든 요소들은 공통 인터페이스를 공유하며, 이 인터페이스를 사용하는 클라이언트는 동작하는 객체들을 걱정할 필요가 없음
 
 ## 4. Pros and Cons
