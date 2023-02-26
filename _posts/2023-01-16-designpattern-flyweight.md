@@ -1,21 +1,25 @@
 ---
 published: true
-title:  "[Design Pattern] Structural - Flyweight in C++"
+title:  "[Design Pattern] 플라이웨이트 패턴(Flyweight) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
   - Algorithm
 tags:
-  - [DesignPattern, Flyweight, Structural, Pattern]
+  - [플라이웨이트, 캐시, DesignPattern, Flyweight, Structural, Pattern]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-16
 last_modified_at: 2023-01-16
 ---
 
-## 1. Flyweight
+## 1. Flyweight known as Cache
 
 - 데이터의 일부를 캐싱을 통해 다른 유사한 객체와 공유하여 메모리 사용을 최소화하는 방법
 - 이 패턴은 구현, 변경, 테스트 및 재사용이 유연한 디자인을 구현하게 함
@@ -32,8 +36,8 @@ last_modified_at: 2023-01-16
 ### 1.2. 문제
 
 - 플레이어들이 지도를 돌아다니며 서로 총을 쏘는 비디오 게임을 만든다고 가정
-- 폭발로 인한 총알들, 미사일들 및 파편들을 사실적인 입자 시스템을 구현하여 제공하였는데 사용자의 컴퓨터의 RAM이 충분하지 않아 게임이 충돌했음을 알게 되었음
-- 문제의 원인은 입자를 가진 많은 데이터를 포함하는 객체들이 새로 생성될 때 마다 계속 늘어나 RAM이 감당하지 못하는 문제가 생김
+- 폭발로 인한 총알들, 미사일들 및 파편들을 사실적인 Particle(입자) 시스템을 구현하여 제공하였는데 사용자의 컴퓨터의 RAM이 충분하지 않아 게임이 충돌했음을 알게 되었음
+- 문제의 원인은 Particle(입자)를 가진 많은 데이터를 포함하는 객체들이 새로 생성될 때 마다 계속 늘어나 RAM이 감당하지 못하는 문제가 생김
 
 ![image](https://user-images.githubusercontent.com/23397039/212620958-c54c379a-0e3e-43dc-9231-a7810282507c.png){: .align-center}
 
@@ -53,7 +57,7 @@ last_modified_at: 2023-01-16
 
 ![image](https://user-images.githubusercontent.com/23397039/212621113-c1887215-0e86-47ad-92b9-45852266b6b7.png){: .align-center}
     
-- *"고유한 상태"* 만 저장하는 객체를 Flyweight라고 부름
+- *"고유한 상태"* 만 저장하는 객체를 Flyweight(캐시)라고 부름
 
 ## 2. 구조
 
@@ -75,7 +79,7 @@ last_modified_at: 2023-01-16
 
 ## 3. 사용
 
-- Flyweight 패턴은 프로그램이 많은 수의 객체들을 지원해야 하는데 사용할 수 있는 RAM을 거의 다 사용했을 때만 사용
+1. Flyweight 패턴은 프로그램이 많은 수의 객체들을 지원해야 하는데 사용할 수 있는 RAM을 거의 다 사용했을 때만 사용
     - 앱이 수많은 유사 객체들을 생성해야 할 때
     - 사용할 수 있는 모든 RAM을 소모할 때
     - 객체들에 여러 중복 상태들이 포함되어 있으며, 이 상태들이 추출된 후 객체 간에 공유될 수 있을 때
