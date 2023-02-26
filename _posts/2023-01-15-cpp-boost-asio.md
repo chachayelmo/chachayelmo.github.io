@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] C++ Boost asio/beast"
+title:  "[C++] Boost asio/beast"
 excerpt: "Boost asio와 beast에 대해 알아보기"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-15
 last_modified_at: 2023-01-15
 ---
