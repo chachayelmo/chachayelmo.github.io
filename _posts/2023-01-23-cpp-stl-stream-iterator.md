@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] STL stream iterator"
+title:  "[C++] STL 스트림 반복자(stream iterator)"
 excerpt: "stream iterator에 대해 알아보기"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Iterator, Stream]
+  - [스트림반복자, C++, Cpp, Iterator, Stream]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-23
 last_modified_at: 2023-01-23
 ---

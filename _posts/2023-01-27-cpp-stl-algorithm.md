@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] STL algorithm"
+title:  "[C++] STL 알고리즘(algorithm)"
 excerpt: "algorithm 에 대해 알아보기"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, STL, algorithm]
+  - [알고리즘, C++, Cpp, STL, algorithm]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-27
 last_modified_at: 2023-01-27
 ---

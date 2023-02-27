@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] C++ STL iterator"
+title:  "[C++] STL 반복자(iterator)"
 excerpt: "iterator에 대해 알아보기"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Iterator]
+  - [반복자, C++, Cpp, Iterator]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-20
 last_modified_at: 2023-01-20
 ---

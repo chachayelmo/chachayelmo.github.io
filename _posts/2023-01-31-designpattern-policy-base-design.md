@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Design Pattern] Policy Base Design in C++"
+title:  "[Design Pattern] 정책기반 디자인패턴(Policy Base Design) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-31
 last_modified_at: 2023-01-31
 ---

@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] STL insert iterator"
+title:  "[C++] STL 삽입 반복자(insert iterator)"
 excerpt: "insert iterator에 대해 알아보기"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Iterator, Insert]
+  - [삽입반복자, C++, Cpp, Iterator, Insert]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-22
 last_modified_at: 2023-01-22
 ---

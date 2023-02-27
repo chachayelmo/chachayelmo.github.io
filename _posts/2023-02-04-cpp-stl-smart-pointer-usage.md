@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] STL Smart pointer 사용법"
+title:  "[C++] STL 스마트포인터(Smart pointer) 사용법"
 excerpt: "Smart pointer 에 대해 알아보기"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, STL, Smart, Pointer]
+  - [스마트포인터, C++, Cpp, STL, Smart, Pointer]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-02-04
 last_modified_at: 2023-02-04
 ---

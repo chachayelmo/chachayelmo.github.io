@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] STL thread asnyc"
+title:  "[C++] STL 스레드 비동기(thread asnyc)"
 excerpt: "asnyc 에 대해 알아보기"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-02-08
 last_modified_at: 2023-02-08
 ---

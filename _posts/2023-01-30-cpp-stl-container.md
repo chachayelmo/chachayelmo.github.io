@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Programming] STL container"
+title:  "[C++] STL 컨테이너(container)"
 excerpt: "container 에 대해 알아보기"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-30
 last_modified_at: 2023-02-03
 ---

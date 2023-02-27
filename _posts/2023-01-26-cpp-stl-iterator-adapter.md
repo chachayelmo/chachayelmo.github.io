@@ -1,16 +1,20 @@
 ---
 published: true
-title:  "[Programming] STL iterator adapter"
+title:  "[C++] STL 반복자 어댑터(iterator adapter)"
 excerpt: "iterator adapter에 대해 알아보기"
 
 categories:
   - Cpp
 tags:
-  - [C++, Cpp, Iterator, Adapter]
+  - [반복자어댑터, C++, Cpp, Iterator, Adapter]
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-01-26
 last_modified_at: 2023-01-26
 ---
