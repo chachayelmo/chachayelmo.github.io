@@ -4,7 +4,7 @@ title:  "[C++] Boost asio/beast"
 excerpt: "Boost asio와 beast에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Boost
 tags:
   - [C++, Cpp, Boost, Asio, Beast]
 

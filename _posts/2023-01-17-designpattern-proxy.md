@@ -4,7 +4,7 @@ title:  "[Design Pattern] 프록시 패턴(Proxy) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [프록시, DesignPattern, Proxy, Structural, Pattern]
 

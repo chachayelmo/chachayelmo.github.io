@@ -4,9 +4,9 @@ title:  "[C++] STL 반복자 어댑터(iterator adapter)"
 excerpt: "iterator adapter에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [반복자어댑터, C++, Cpp, Iterator, Adapter]
+  - [반복자어댑터, C++, Cpp, Stl, Iterator, Adapter]
 
 toc: true
 toc_sticky: true

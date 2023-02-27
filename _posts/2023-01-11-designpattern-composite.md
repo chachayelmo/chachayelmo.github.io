@@ -4,7 +4,7 @@ title:  "[Design Pattern] 합성 패턴(Composite) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [합성, DesignPattern, Composite, Structural, Pattern]
 

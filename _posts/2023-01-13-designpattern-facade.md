@@ -4,7 +4,7 @@ title:  "[Design Pattern] 파사드 패턴(Facade) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [파사드, DesignPattern, Facade, Structural, Pattern]
 

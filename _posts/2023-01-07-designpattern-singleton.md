@@ -4,7 +4,7 @@ title:  "[Design Pattern] 싱글톤 패턴(Singleton) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [싱글톤, 디자인패턴, DesignPattern, Singleton, Creational, Pattern]
 

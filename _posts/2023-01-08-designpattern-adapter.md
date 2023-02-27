@@ -4,7 +4,7 @@ title:  "[Design Pattern] 어댑터 패턴(Adapter) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [어댑터, 디자인패턴, DesignPattern, Adapter, Structural, Pattern]
 

@@ -4,7 +4,7 @@ title:  "[Design Pattern] 플라이웨이트 패턴(Flyweight) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [플라이웨이트, 캐시, DesignPattern, Flyweight, Structural, Pattern]
 

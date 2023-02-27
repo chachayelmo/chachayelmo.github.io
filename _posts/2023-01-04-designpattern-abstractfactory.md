@@ -4,7 +4,7 @@ title:  "[Design Pattern] 추상팩토리 패턴(Abstract Factory pattern) in C+
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [추상팩토리, 디자인패턴, DesignPattern, AbstractFactory, Creational, Pattern]
 

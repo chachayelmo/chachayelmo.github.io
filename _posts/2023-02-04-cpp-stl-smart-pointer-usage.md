@@ -4,9 +4,9 @@ title:  "[C++] STL 스마트포인터(Smart pointer) 사용법"
 excerpt: "Smart pointer 에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [스마트포인터, C++, Cpp, STL, Smart, Pointer]
+  - [스마트포인터, C++, Cpp, Stl, Smart, Pointer]
 
 toc: true
 toc_sticky: true

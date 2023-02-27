@@ -15,7 +15,21 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Cpp" %}
-                        <li><a href="/categories/cpp" class="">C ++ ({{category[1].size}})</a></li>
+                        <li><a href="/categories/cpp" class="">C++ ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Stl" %}
+                        <li><a href="/categories/stl" class="">C++ STL ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Boost" %}
+                        <li><a href="/categories/boost" class="">C++ Boost ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -26,16 +40,12 @@
                         <li><a href="/categories/algorithm" class="">Algorithm ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
+                {% for category in site.categories %}
+                    {% if category[0] == "DesignPattern" %}
+                       <li><a href="/categories/designpattern" class="">Design Pattern ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
             </ul>
-            <!--
-                <ul>
-                    {% for category in site.categories %}
-                        {% if category[0] == "coding" %}
-                            <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            -->
         <span class="nav__sub-title">CS</span>
             <ul>
                 {% for category in site.categories %}

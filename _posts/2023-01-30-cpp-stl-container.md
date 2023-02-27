@@ -4,9 +4,9 @@ title:  "[C++] STL 컨테이너(container)"
 excerpt: "container 에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [C++, Cpp, STL, Container]
+  - [C++, Cpp, Stl, Container]
 
 toc: true
 toc_sticky: true

@@ -4,9 +4,9 @@ title:  "[C++] STL 스레드 비동기(thread asnyc)"
 excerpt: "asnyc 에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [C++, Cpp, STL, Async]
+  - [C++, Cpp, Stl, Async]
 
 toc: true
 toc_sticky: true

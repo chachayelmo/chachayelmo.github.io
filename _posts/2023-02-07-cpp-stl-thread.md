@@ -4,9 +4,9 @@ title:  "[C++] STL 스레드(thread)"
 excerpt: "thread 에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [C++, Cpp, STL, Thread]
+  - [C++, Cpp, Stl, Thread]
 
 toc: true
 toc_sticky: true

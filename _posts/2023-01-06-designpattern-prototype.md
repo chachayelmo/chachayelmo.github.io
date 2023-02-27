@@ -4,7 +4,7 @@ title:  "[Design Pattern] 프로토타입 패턴(Prototype pattern) in C++"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [프로토타입, 디자인패턴DesignPattern, Prototype, Creational, Pattern]
 

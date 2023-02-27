@@ -4,9 +4,9 @@ title:  "[C++] STL function"
 excerpt: "function 에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [C++, Cpp, STL, Bind, Function]
+  - [C++, Cpp, Stl, Bind, Function]
 
 toc: true
 toc_sticky: true

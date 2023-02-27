@@ -4,9 +4,9 @@ title:  "[C++] STL 스트림 반복자(stream iterator)"
 excerpt: "stream iterator에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [스트림반복자, C++, Cpp, Iterator, Stream]
+  - [스트림반복자, C++, Cpp, Stl, Iterator, Stream]
 
 toc: true
 toc_sticky: true

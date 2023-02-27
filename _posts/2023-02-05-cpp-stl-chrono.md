@@ -4,9 +4,9 @@ title:  "[C++] STL chrono"
 excerpt: "chrono 에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [C++, Cpp, STL, Ratio, Duration, Chrono]
+  - [C++, Cpp, Stl, Ratio, Duration, Chrono]
 
 toc: true
 toc_sticky: true

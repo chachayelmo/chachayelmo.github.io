@@ -4,7 +4,7 @@ title:  "[Design Pattern] 빌더 패턴(Builder pattern) in C++"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [빌더, 디자인패턴, DesignPattern, Builder, Creational, Pattern]
 

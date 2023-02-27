@@ -4,7 +4,7 @@ title:  "[Design Pattern] 브릿지 패턴(Bridge) in C++"
 excerpt: "다양한 디자인패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [브릿지, DesignPattern, Bridge, Structural, Pattern]
 

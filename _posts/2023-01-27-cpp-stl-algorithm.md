@@ -4,9 +4,9 @@ title:  "[C++] STL 알고리즘(algorithm)"
 excerpt: "algorithm 에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [알고리즘, C++, Cpp, STL, algorithm]
+  - [알고리즘, C++, Cpp, Stl, algorithm]
 
 toc: true
 toc_sticky: true

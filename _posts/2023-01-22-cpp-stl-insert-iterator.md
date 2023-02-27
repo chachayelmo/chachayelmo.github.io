@@ -4,9 +4,9 @@ title:  "[C++] STL 삽입 반복자(insert iterator)"
 excerpt: "insert iterator에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [삽입반복자, C++, Cpp, Iterator, Insert]
+  - [삽입반복자, C++, Cpp, Stl, Iterator, Insert]
 
 toc: true
 toc_sticky: true

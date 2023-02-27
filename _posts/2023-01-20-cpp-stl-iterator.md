@@ -4,9 +4,9 @@ title:  "[C++] STL 반복자(iterator)"
 excerpt: "iterator에 대해 알아보기"
 
 categories:
-  - Cpp
+  - Stl
 tags:
-  - [반복자, C++, Cpp, Iterator]
+  - [반복자, C++, Cpp, Stl, Iterator]
 
 toc: true
 toc_sticky: true

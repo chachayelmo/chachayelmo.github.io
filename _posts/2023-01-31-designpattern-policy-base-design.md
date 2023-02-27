@@ -4,7 +4,7 @@ title:  "[Design Pattern] 정책기반 디자인패턴(Policy Base Design) in C+
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
-  - Algorithm
+  - DesignPattern
 tags:
   - [DesignPattern, PolicyBase, Pattern]
 
