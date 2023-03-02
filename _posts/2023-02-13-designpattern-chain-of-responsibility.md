@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Design Pattern] Chain of Responsibility in C++"
+title:  "[Design Pattern] 책임 연쇄 패턴(Chain of Responsibility) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-02-13
 last_modified_at: 2023-02-13
 ---
@@ -58,17 +62,21 @@ last_modified_at: 2023-02-13
 
 ![image](https://user-images.githubusercontent.com/23397039/218373073-51c74208-622e-478a-b7cf-a20cb132410a.png){: .align-center}
 
-- Handler : 공통적인 인터페이스를 선언, 일반적으로 여기에는 요청을 처리하기 위한 단일 메소드만 포함하지만 때로는 chain의 다음 handler를 셋팅하기 위한 메소드를 포함할 수 있음
-- BaseHandler : optional이며 모든 handler에 대한 공통적인 코드를 구현할 수 있음
-- ConcreteHandlers : 요청을 처리하기 위한 실제 코드가 구현
-- Client : 로직에 따라 chain들을 한번만 구성하거나 동적으로 구성할 수 있음
+- Handler
+    - 공통적인 인터페이스를 선언, 일반적으로 여기에는 요청을 처리하기 위한 단일 메소드만 포함하지만 때로는 chain의 다음 handler를 셋팅하기 위한 메소드를 포함할 수 있음
+- BaseHandler
+    - optional이며 모든 handler에 대한 공통적인 코드를 구현할 수 있음
+- ConcreteHandlers
+    - 요청을 처리하기 위한 실제 코드가 구현
+- Client
+    - 로직에 따라 chain들을 한번만 구성하거나 동적으로 구성할 수 있음
 
 ## 3. 사용
 
-- 이 패턴은 프로그램이 다양한 방식으로 다양한 종류의 요청에 대한 순서를 미리 알 수 없는 경우 사용
+1. 프로그램이 다양한 방식으로 다양한 종류의 요청에 대한 순서를 미리 알 수 없는 경우 사용
     - 여러 handler를 하나의 chain으로 연결할 수 있도록 해주고, 요청을 받으면 각 handler에게 요청을 처리할 수 잇는지 질문하여 모든 handler가 요청을 처리할 기회를 얻게 해줌
-- 특정 순서로 여러 handler를 실행해야 할 때 사용
-- handler들의 집합과 순서가 런타임에 변경되어야 할 때 사용
+2. 특정 순서로 여러 handler를 실행해야 할 때 사용
+3. handler들의 집합과 순서가 런타임에 변경되어야 할 때 사용
 
 ## 4. Pros and Cons
 
