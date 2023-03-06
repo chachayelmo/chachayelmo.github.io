@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[Design Pattern] Iterator in C++"
+title:  "[Design Pattern] 반복자 패턴(Iterator) in C++"
 excerpt: "다양한 디자인 패턴에 대해 알아보기"
 
 categories:
@@ -10,7 +10,11 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+author: chachayelmo
+sitemap:
+  changefreq : daily
+  priority : 1.0
+comment: true
 date: 2023-02-17
 last_modified_at: 2023-02-17 
 ---
@@ -41,18 +45,23 @@ last_modified_at: 2023-02-17
 
 ![image](https://user-images.githubusercontent.com/23397039/219567972-ec7b714e-f130-4562-9eed-41c0b2007863.png){: .align-center}
 
-- **iterator** : 인터페이스이며 collection의 순회에 필요한 작업들을 선언
-- **ConcreteIterator** : 순회를 위한 특정 알고리즘들을 구현
-- **Collection** : 인터페이스이며, iterator들을 가져오기 위해 하나 이상의 메소드를 선언
-- **ConcreteCollection** : 클라이언트가 요청할 때마다 특정 iterator 객체를 반환
-- **Client** : iterator와 collection 인터페이스를 통해 원하는 동작을 실행
+- **iterator**
+    - 인터페이스이며 collection의 순회에 필요한 작업들을 선언
+- **ConcreteIterator**
+    - 순회를 위한 특정 알고리즘들을 구현
+- **Collection**
+    - 인터페이스이며, iterator들을 가져오기 위해 하나 이상의 메소드를 선언
+- **ConcreteCollection**
+    - 클라이언트가 요청할 때마다 특정 iterator 객체를 반환
+- **Client**
+    - iterator와 collection 인터페이스를 통해 원하는 동작을 실행
 
 ## 3. 사용
 
-- collection이 내부에 복잡한 데이터 구조가 있지만 이 구조의 복잡성을 보안이나 편의성의 이유로 클라이언트들로부터 숨기고 싶을 때 사용
+1. collection이 내부에 복잡한 데이터 구조가 있지만 이 구조의 복잡성을 보안이나 편의성의 이유로 클라이언트들로부터 숨기고 싶을 때 사용
     - 복잡한 데이터 구조와 작업 시의 세부 사항을 캡슐화하여 숨기고 클라이언트에게 요소들을 접근할 수 있는 몇가지 간단한 메소드를 제공
-- 앱에서 순회 코드의 중복을 줄일 때 사용
-- 코드가 다른 데이터 구조들을 순회할 수 있기를 원하거나 이러한 구조들의 유형을 미리 알 수 없을 때 사용
+2. 앱에서 순회 코드의 중복을 줄일 때 사용
+3. 코드가 다른 데이터 구조들을 순회할 수 있기를 원하거나 이러한 구조들의 유형을 미리 알 수 없을 때 사용
     - collection과 iterator 에 대해 여러 개의 일반 인터페이스를 제공
 
 ## 4. Pros and Cons
