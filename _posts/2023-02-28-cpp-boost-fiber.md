@@ -1,6 +1,6 @@
 ---
 published: true
-title:  "[C++] 부스트 파이버(Boost fiber_"
+title:  "[C++] 부스트 파이버(Boost fiber)"
 excerpt: "Boost fiber에 대해 알아보기"
 
 categories:
