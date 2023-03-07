@@ -22,7 +22,7 @@ last_modified_at: 2023-01-28
 ## 1. Overview
 
 - 부스트 파이버는 userland thread(fiber)를 위한 framework을 제공
-- API에는 표준 스레드와 유사하게 파이버를 관리하고 동기화 하는 클래스와 기능이 포함되어있음
+- API에는 표준 스레드와 유사하게 파이버를 관리하고 동기화 하는 클래스와 기능이 포함되어 있음
 - 각각의 파이버는 자체 스택을 가짐
 - 파이버는 현재 실행 상태를 저장(registers, CPU flags, instruction pointer, and stack pointer)하고 나중에 이 상태를 복원할 수 있음
 - 아이디어는 협력 스케줄링(cooperative scheduing)을 사용하여 싱글 스레드에서 여러 실행 경로를 실행하는 것 ( 스레드는 선점적으로 스케줄링 )
@@ -35,8 +35,8 @@ last_modified_at: 2023-01-28
 - [call/cc](https://www.boost.org/doc/libs/1_81_0/libs/context/doc/html/context/cc.html) 란?
     - call with current continuation 로 universal control operator
     - 현재 CONTINUATION을 first-class object로 갭쳐하고 이를 다른 continuation에 argument로 전달하는 연산자
-    - continuation은 주어진 시점에서 control flow의 state를 나타냄
-    - Continuation은 control flow를 변경하기 위해 suspended and resumed 가 가능
+    - CONTINUATION은 주어진 시점에서 control flow의 state를 나타냄
+    - CONTINUATION은 control flow를 변경하기 위해 suspended and resumed 가 가능
 
     ```cpp
     namespace ctx=boost::context;
@@ -72,7 +72,7 @@ last_modified_at: 2023-01-28
 
 ### 1.1. Fibers and Threads
 
-- Control은 주어진 스레드에서 시작되는 fibers 간에 협력적으로 전달, 스레드에서 적어도 하나의 파이버가 running 중
+- Control은 주어진 스레드에서 시작되는 fibers 간에 협력적으로 전달, 스레드에서 적어도 하나의 파이버가 running
 
 - Thread
     - 스레드에서 추가 파이버를 생성하는 것은 프로그램이 실행 중인 코어를 더 효과적으로 사용할 수 있지만 더 많은 하드웨어 코어에 프로그램을 배포하지 않음
@@ -116,139 +116,137 @@ last_modified_at: 2023-01-28
     - [Boost.Asio](https://www.boost.org/doc/libs/release/libs/asio/index.html) 및 기타 비동기 I/O 작업은 적용 가능 [Integrating Fibers with Asynchronous Callbacks](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/callbacks.html#callbacks).
     - 부스트 파이버는 부스트 컨텍스트([Boost.Context](https://www.boost.org/doc/libs/release/libs/context/index.html))에 의존!
     
-    ## 2. Fiber management
-    
-    ### 2.1. 개요
-    
-    ```cpp
-    #include <boost/fiber/all.hpp>
-    
-    namespace boost {
-    namespace fibers {
-    
-    class fiber;
-    bool operator<( fiber const& l, fiber const& r) noexcept;
-    void swap( fiber & l, fiber & r) noexcept;
-    
-    template< typename SchedAlgo, typename ... Args >
-    void use_scheduling_algorithm( Args && ... args);
-    bool has_ready_fibers();
-    
-    namespace algo {
-    
-    struct algorithm;
-    template< typename PROPS >
-    struct algorithm_with_properties;
-    class round_robin;
-    class shared_round_robin;
-    
-    }}
-    
-    namespace this_fiber {
-    
-    fibers::id get_id() noexcept;
-    void yield();
-    template< typename Clock, typename Duration >
-    void sleep_until( std::chrono::time_point< Clock, Duration > const& abs_time)
-    template< typename Rep, typename Period >
-    void sleep_for( std::chrono::duration< Rep, Period > const& rel_time);
+## 2. Fiber management
+
+### 2.1. 개요
+
+```cpp
+#include <boost/fiber/all.hpp>
+
+namespace boost {
+namespace fibers {
+
+class fiber;
+bool operator<( fiber const& l, fiber const& r) noexcept;
+void swap( fiber & l, fiber & r) noexcept;
+
+template< typename SchedAlgo, typename ... Args >
+void use_scheduling_algorithm( Args && ... args);
+bool has_ready_fibers();
+
+namespace algo {
+
+struct algorithm;
+template< typename PROPS >
+struct algorithm_with_properties;
+class round_robin;
+class shared_round_robin;
+
+}}
+
+namespace this_fiber {
+
+fibers::id get_id() noexcept;
+void yield();
+template< typename Clock, typename Duration >
+void sleep_until( std::chrono::time_point< Clock, Duration > const& abs_time)
+template< typename Rep, typename Period >
+void sleep_for( std::chrono::duration< Rep, Period > const& rel_time);
+template< typename PROPS >
+PROPS & properties();
+
+}
+```
+
+### 2.2. 사용
+
+- 각 fiber는 스케줄러에 의해 시작 및 관리됨
+- fiber object는 move-only
+
+```cpp
+boost::fibers::fiber f1; // not-a-fiber
+
+void f() {
+    boost::fibers::fiber f2( some_fn);
+
+    f1 = std::move( f2); // f2 moved to f1
+}
+```
+
+- 
+
+### 2.1 [Class fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/fiber.html)
+
+```cpp
+#include <boost/fiber/fiber.hpp>
+
+namespace boost {
+namespace fibers {
+
+class fiber {
+public:
+        // class id는 아래에서 알아보기!
+    class id;
+
+        // default 생성자
+    constexpr fiber() noexcept;
+
+        // 생성자들, Fn은 copyable or movable
+    template< typename Fn, typename ... Args >
+    fiber( Fn &&, Args && ...);
+
+    template< typename Fn, typename ... Args >
+    fiber( launch, Fn &&, Args && ...);
+
+    template< typename StackAllocator, typename Fn, typename ... Args >
+    fiber( std::allocator_arg_t, StackAllocator &&, Fn &&, Args && ...);
+
+    template< typename StackAllocator, typename Fn, typename ... Args >
+    fiber( launch, std::allocator_arg_t, StackAllocator &&, Fn &&, Args && ...);
+
+    ~fiber();
+
+    fiber( fiber const&) = delete;
+
+    fiber & operator=( fiber const&) = delete;
+
+    fiber( fiber &&) noexcept;
+
+    fiber & operator=( fiber &&) noexcept;
+
+    void swap( fiber &) noexcept;
+
+    bool joinable() const noexcept;
+
+    id get_id() const noexcept;
+
+    void detach();
+
+    void join();
+
     template< typename PROPS >
     PROPS & properties();
-    
-    }
-    ```
-    
-    ### 2.2. 사용
-    
-    - 각 fiber는 스케줄러에 의해 시작 및 관리됨
-    - fiber object는 move-only
-    
-    ```cpp
-    boost::fibers::fiber f1; // not-a-fiber
-    
-    void f() {
-        boost::fibers::fiber f2( some_fn);
-    
-        f1 = std::move( f2); // f2 moved to f1
-    }
-    ```
-    
-    - 
-    
-    ### 2.1 [Class fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/fiber.html)
-    
-    ```cpp
-    #include <boost/fiber/fiber.hpp>
-    
-    namespace boost {
-    namespace fibers {
-    
-    class fiber {
-    public:
-    		// class id는 아래에서 알아보기!
-        class id;
-    
-    		// default 생성자
-        constexpr fiber() noexcept;
-    
-    		// 생성자들, Fn은 copyable or movable
-        template< typename Fn, typename ... Args >
-        fiber( Fn &&, Args && ...);
-    
-        template< typename Fn, typename ... Args >
-        fiber( launch, Fn &&, Args && ...);
-    
-        template< typename StackAllocator, typename Fn, typename ... Args >
-        fiber( std::allocator_arg_t, StackAllocator &&, Fn &&, Args && ...);
-    
-        template< typename StackAllocator, typename Fn, typename ... Args >
-        fiber( launch, std::allocator_arg_t, StackAllocator &&, Fn &&, Args && ...);
-    
-        ~fiber();
-    
-        fiber( fiber const&) = delete;
-    
-        fiber & operator=( fiber const&) = delete;
-    
-        fiber( fiber &&) noexcept;
-    
-        fiber & operator=( fiber &&) noexcept;
-    
-        void swap( fiber &) noexcept;
-    
-        bool joinable() const noexcept;
-    
-        id get_id() const noexcept;
-    
-        void detach();
-    
-        void join();
-    
-        template< typename PROPS >
-        PROPS & properties();
-    };
-    
-    bool operator<( fiber const&, fiber const&) noexcept;
-    
-    void swap( fiber &, fiber &) noexcept;
-    
-    template< typename SchedAlgo, typename ... Args >
-    void use_scheduling_algorithm( Args && ...) noexcept;
-    
-    bool has_ready_fibers() noexcept;
-    
-    }}
-    ```
-    
-    ### 2.2. [Class fiber::id](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/id.html)
-    
-    - 
-    
-    ### 2.3. [Namespace this_fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/this_fiber.html)
-    
-    ## 참고
-    
-    [https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/index.html](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/index.html)
+};
+
+bool operator<( fiber const&, fiber const&) noexcept;
+
+void swap( fiber &, fiber &) noexcept;
+
+template< typename SchedAlgo, typename ... Args >
+void use_scheduling_algorithm( Args && ...) noexcept;
+
+bool has_ready_fibers() noexcept;
+
+}}
+```
+
+### 2.2. [Class fiber::id](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/id.html)
+
+- 
+
+### 2.3. [Namespace this_fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/this_fiber.html)
+
+
 
 ## 참고
 [boost.org fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/index.html)  
