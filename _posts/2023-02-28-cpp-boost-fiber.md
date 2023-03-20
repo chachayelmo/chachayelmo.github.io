@@ -175,7 +175,7 @@ void f() {
 
 - 
 
-### 2.1 [Class fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/fiber.html)
+### 2.3  [Class fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/fiber.html)
 
 ```cpp
 #include <boost/fiber/fiber.hpp>
@@ -185,13 +185,13 @@ namespace fibers {
 
 class fiber {
 public:
-        // class id는 아래에서 알아보기!
+    // class id는 아래에서 알아보기!
     class id;
 
-        // default 생성자
+    // default 생성자
     constexpr fiber() noexcept;
 
-        // 생성자들, Fn은 copyable or movable
+    // 생성자들, Fn은 copyable or movable
     template< typename Fn, typename ... Args >
     fiber( Fn &&, Args && ...);
 
@@ -216,14 +216,19 @@ public:
 
     void swap( fiber &) noexcept;
 
+    // 파이버가 joinable인 동안 소멸자가 실행되지 않도록 해야 됨
+    // 파이버가 완료된 것을 알고 있더라도 파이버를 제거하기 전에 join() or detach()를 호출해야 됨
     bool joinable() const noexcept;
 
     id get_id() const noexcept;
 
+    // 실행중인 파이버가 detach되고 더 이상 관련된 파이버가 없음
     void detach();
 
+    // 실행중인 파이버가 완료될 때까지 기다림
     void join();
 
+    // *this에 대한 스케줄러 속성 인스턴스에 대한 참조
     template< typename PROPS >
     PROPS & properties();
 };
@@ -235,18 +240,83 @@ void swap( fiber &, fiber &) noexcept;
 template< typename SchedAlgo, typename ... Args >
 void use_scheduling_algorithm( Args && ...) noexcept;
 
+// 스케줄러에 실행할 파이버가 있으면 true
 bool has_ready_fibers() noexcept;
 
 }}
 ```
 
-### 2.2. [Class fiber::id](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/id.html)
+### 2.4. [Class fiber::id](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/id.html)
 
-- 
+```cpp
+#include <boost/fiber/fiber.hpp>
 
-### 2.3. [Namespace this_fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/this_fiber.html)
+namespace boost {
+namespace fibers {
 
+class id {
+public:
+    constexpr id() noexcept;
+    bool operator==( id const&) const noexcept;
+    bool operator!=( id const&) const noexcept;
+    bool operator<( id const&) const noexcept;
+    bool operator>( id const&) const noexcept;
+    bool operator<=( id const&) const noexcept;
+    bool operator>=( id const&) const noexcept;
 
+    template< typename charT, class traitsT >
+    friend std::basic_ostream< charT, traitsT > &
+    operator<<( std::basic_ostream< charT, traitsT > &, id const&);
+};
+
+}}
+```
+
+### 2.5. [Namespace this_fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/fiber_mgmt/this_fiber.html)
+
+```cpp
+namespace boost {
+namespace this_fiber {
+
+fibers::fiber::id get_id() noexcept;
+void yield() noexcept;
+template< typename Clock, typename Duration >
+void sleep_until( std::chrono::time_point< Clock, Duration > const&);
+template< typename Rep, typename Period >
+void sleep_for( std::chrono::duration< Rep, Period > const&);
+template< typename PROPS >
+PROPS & properties();
+
+}}
+```
+
+- Non-member functions
+
+```cpp
+#include <boost/fiber/operations.hpp>
+
+namespace boost {
+namespace fibers {
+
+// 현재 실행중인 파이버 id를 나타냄
+fiber::id get_id() noexcept;
+
+// abs_time에 도달할 때까지 현재 파이버를 일시 중단
+template< typename Clock, typename Duration >
+void sleep_until( std::chrono::time_point< Clock, Duration > const& abs_time);
+
+// rel_time에서 지정한 시간이 경과할 때까지 현재 파이버를 일시 중단
+template< class Rep, class Period >
+void sleep_for( std::chrono::duration< Rep, Period > const& rel_time);
+}}
+
+// 실행 제어를 포기하고 다른 파이버가 실행되도록 허용
+void yield() noexcept;
+
+// 현재 실행 중인 파이버에 대한 스케줄러 속성 인스턴스에 대한 참조
+template< typename PROPS >
+PROPS & properties();
+```
 
 ## 참고
 [boost.org fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/index.html)  
