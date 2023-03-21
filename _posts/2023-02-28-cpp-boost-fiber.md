@@ -318,6 +318,276 @@ template< typename PROPS >
 PROPS & properties();
 ```
 
+## 3. 스케줄링
+
+- 스레드 파이버는 fiber manager에 의해 조정
+- 파이버는 협력적으로 제워권을 교환하기 때문에, 현재 실행 중인 파이버는 제어권을 manager에게 전달하는 작업이 호출될 때까지 제어권을 유지
+- 파이버가 일시 중지 또는 yield 될 대마다 manger는 다음에 실행될 파이버를 결정하기 위해 스케줄러를 참조
+- 각 스레드에는 자체 스케줄러가 있으며, 프로세스의 다른 스레드는 다른 스케줄러를 사용할 수 있음
+- 기본적으로 round robin을 각 스레드의 스케줄러로 만들며 교체가 가능
+
+### 3.1. use_scheduling_algorithm
+
+- 알고리즘 sub class는 use_scheduling_algorithm 을 호출하여 특정 스레드에 참여하는 것이 가능
+
+```cpp
+void thread_fn() {
+    boost::fibers::use_scheduling_algorithm< my_fiber_scheduler >();
+    ...
+}
+```
+
+### 3.2. 스케줄러 클래스
+
+- 스케줄러 클래스는 인터페이스 알고리즘을 구현해야 함
+- 파이버는 round_robin, work_stealing, numa::work_stealing 및 shared_work와 같은 스케줄러를 제공
+
+```cpp
+void thread( std::uint32_t thread_count) {
+    // thread registers itself at work-stealing scheduler
+    boost::fibers::use_scheduling_algorithm< boost::fibers::algo::work_stealing >( thread_count);
+    ...
+}
+
+// count of logical cpus
+std::uint32_t thread_count = std::thread::hardware_concurrency();
+// start worker-threads first
+std::vector< std::thread > threads;
+for ( std::uint32_t i = 1 /* count start-thread */; i < thread_count; ++i) {
+    // spawn thread
+    threads.emplace_back( thread, thread_count);
+}
+// start-thread registers itself at work-stealing scheduler
+boost::fibers::use_scheduling_algorithm< boost::fibers::algo::work_stealing >( thread_count);
+...
+```
+
+### 3.3. Class algorithm
+
+```cpp
+#include <boost/fiber/algo/algorithm.hpp>
+
+namespace boost {
+namespace fibers {
+namespace algo {
+
+struct algorithm {
+    virtual ~algorithm();
+
+    // 파이버 f가 실행될 준비가 되었음을 스케줄러에 알림
+    virtual void awakened( context *) noexcept = 0;
+
+    // 다음에 재개할 파이버 or 준비된 파이버가 없으면 nullptr
+    virtual context * pick_next() noexcept = 0;
+
+    // 스케줄러에 실행할 파이버가 있으면 true
+    virtual bool has_ready_fibers() const noexcept = 0;
+
+    // abs_time까지 파이버가 준비되지 않음을 스케줄러에 알림
+    virtual void suspend_until( std::chrono::steady_clock::time_point const&) noexcept = 0;
+
+    // suspend_until() 에 대한 대기 중인 call 에서 return 하도록 스케줄러에 요청
+    virtual void notify() noexcept = 0;
+};
+
+}}}
+```
+
+- class round_robin
+
+```cpp
+#include <boost/fiber/algo/round_robin.hpp>
+
+namespace boost {
+namespace fibers {
+namespace algo {
+
+class round_robin : public algorithm {
+    // 파이버 f를 ready queue에 넣음
+    virtual void awakened( context *) noexcept;
+
+    // ready queue의 head에 있는 파이버 or empty인 경우 nullptr
+    virtual context * pick_next() noexcept;
+
+    // 스케줄러에 실행할 파이버가 있으면 true
+    virtual bool has_ready_fibers() const noexcept;
+
+    // abs_time까지 사용할 수 있는 파이버가 없음을 알림
+    virtual void suspend_until( std::chrono::steady_clock::time_point const&) noexcept;
+
+    // suspend_util()에 대한 대기 중인 call을 깨우면 일부 파이버가 준비되었을 수 있음
+    // 이 구현은 std::condition_variable::notify_all()을 통해 suspend_until()을 꺠움
+    virtual void notify() noexcept;
+};
+
+}}}
+```
+
+- class work_stealing
+    - local ready-queue에 준비된 파이버가 부족하면 다른 스케줄러에서 준비된 파이버를 훔침
+    - 희생 스케줄러(준비된 파이버를 뺏김)는 무작위로 선택
+
+```cpp
+#include <boost/fiber/algo/work_stealing.hpp>
+
+namespace boost {
+namespace fibers {
+namespace algo {
+
+class work_stealing : public algorithm {
+public:
+    work_stealing( std::uint32_t thread_count, bool suspend = false);
+
+    work_stealing( work_stealing const&) = delete;
+    work_stealing( work_stealing &&) = delete;
+
+    work_stealing & operator=( work_stealing const&) = delete;
+    work_stealing & operator=( work_stealing &&) = delete;
+
+    // 파이버 f를 shared ready queue에 넣음
+    virtual void awakened( context *) noexcept;
+
+    // ready queue의 head에 있는 파이버 또는 empty면 nullptr
+    virtual context * pick_next() noexcept;
+
+    // 스케줄러에 실행할 파이버가 있으면 true
+    virtual bool has_ready_fibers() const noexcept;
+
+    // abs_time까지 사용할 수 있는 준비된 파이버가 없음을 알림
+    virtual void suspend_until( std::chrono::steady_clock::time_point const&) noexcept;
+
+    // suspend_util()에 대한 대기 중인 call을 깨우면 일부 파이버가 준비되었을 수 있음
+    // 이 구현은 std::condition_variable::notify_all()을 통해 suspend_until()을 꺠움
+    virtual void notify() noexcept;
+};
+
+}}}
+```
+
+- Class shared_work
+    - round_robin 방식으로 파이버를 스케줄링하는 알고리즘
+    - 준비된 파이버는 shared_work의 모든 instance(서로 다른 스레드에서 실행) 간에 공유되므로 작업이 모든 스레드에 균등하게 분배
+
+```cpp
+#include <boost/fiber/algo/shared_work.hpp>
+
+namespace boost {
+namespace fibers {
+namespace algo {
+
+class shared_work : public algorithm {
+    shared_work();
+    shared_work( bool suspend);
+
+    // 파이버 f를 shared ready queue에 넣음
+    virtual void awakened( context *) noexcept;
+
+    // ready queue의 head에 있는 파이버 또는 empty면 nullptr
+    virtual context * pick_next() noexcept;
+
+    // 스케줄러에 실행할 파이버가 있으면 true
+    virtual bool has_ready_fibers() const noexcept;
+
+    // abs_time까지 사용할 수 있는 준비된 파이버가 없음을 알림
+    virtual void suspend_until( std::chrono::steady_clock::time_point const&) noexcept;
+
+    // suspend_util()에 대한 대기 중인 call을 깨우면 일부 파이버가 준비되었을 수 있음
+    // 이 구현은 std::condition_variable::notify_all()을 통해 suspend_until()을 꺠움
+    virtual void notify() noexcept;
+};
+
+}}}
+```
+
+- Class context
+    - 알고리즘 구현은 전달된 context instance를 관리하려는 모든 컨테이너를 사용할 수 있음
+    - ready_queue_t는 일반적인 STL 컨테이너의 일부 오버헤드를 방지함
+
+```cpp
+#include <boost/fiber/context.hpp>
+
+namespace boost {
+namespace fibers {
+
+enum class type {
+  none               = unspecified,
+  main_context       = unspecified, // fiber associated with thread's stack
+  dispatcher_context = unspecified, // special fiber for maintenance operations
+  worker_context     = unspecified, // fiber not special to the library
+  pinned_context     = unspecified  // fiber must not be migrated to another thread
+};
+
+class context {
+public:
+    class id;
+
+    // 현재 파이버에 대한 포인터
+    static context * active() noexcept;
+
+    context( context const&) = delete;
+    context & operator=( context const&) = delete;
+
+    // *this 가 실행 파이버를 참조하는 경우 해당 파이버를 나타내는 id의 instance
+    // 그렇지 않으면 기본 구성된 id를 반환
+    id get_id() const noexcept;
+
+    // *this를 실행하는 스케줄러에서 *this 파이버를 분리함
+    void detach() noexcept;
+
+    // *this를 실행하는 스케줄러에 파이버 f를 연결
+    void attach( context *) noexcept;
+
+    // *this가 지정된 type인 경우 true
+    bool is_context( type) const noexcept;
+
+    // *this 가 더이상 유효하지 않은 경우 true
+    bool is_terminated() const noexcept;
+
+    // *this가 알고리즘 구현의 ready-queue에 저장되어 있으면 true
+    bool ready_is_linked() const noexcept;
+
+    // *this가 fiber manager의 remote-ready-queue에 있으면 true
+    bool remote_ready_is_linked() const noexcept;
+
+    // *this 가 일부 동기화 object의 wait-queue에 있으면 true
+    bool wait_is_linked() const noexcept;
+
+    // *this를 ready-queue list에 저장
+    template< typename List >
+    void ready_link( List &) noexcept;
+
+    // *this를 remote-ready-queue list에 저장
+    template< typename List >
+    void remote_ready_link( List &) noexcept;
+
+    // *this를 wait-queue list에 저장
+    template< typename List >
+    void wait_link( List &) noexcept;
+
+    // ready-queue에서 *this를 제거
+    void ready_unlink() noexcept;
+
+    // remote-ready-queue에서 *this를 제거
+    void remote_ready_unlink() noexcept;
+
+    // wait-queue에서 *this를 제거
+    void wait_unlink() noexcept;
+
+    // 다른 파이버가 this를 context::schedule()로 전달할 때까지 실행 중인 파이버를 일시 중단
+    // *this는 not-ready로 표시되며 실행할 다른 파이버를 선택하기 위해 제어를 스케줄러로 전달
+    void suspend() noexcept;
+
+    // context *ctx와 연결된 파이버를 실행할 준비가 된 것으로 표시
+    // 이것은 해당 파이버를 즉시 시작하지는 않음
+    // 후속 재개를 위해 파이버를 스케줄러로 전달
+    void schedule( context *) noexcept;
+};
+
+bool operator<( context const& l, context const& r) noexcept;
+
+}}
+```
+
 ## 참고
 [boost.org fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/index.html)  
 
