@@ -588,6 +588,178 @@ bool operator<( context const& l, context const& r) noexcept;
 }}
 ```
 
+## 4. Synchronization
+
+- 일반적으로, 파이버 synchronization object는 이동하거나 복사할 수 없음
+- synchronization object는 서로 다른 파이버 간에 mutually-agreed rendezvous point 역할을 함
+- object가 다른 곳에 복사된 경우 새로운 복사본에 대한 소비자가 없게 동작
+- 파이버 synchronization object는 기본적으로 서로 다른 스레드에서 실행되는 파이버를 안전하게 동기화 시킴
+- 성능을 위해 BOOST_FIBERS_NO_ATOMICS가 정의된 library를 빌드하면 위의 동기화를 제거할 수 있음
+
+### 4.1. Mutex Types
+
+- Class mutex
+    - mutex는 독점 소유권(exclusive-ownership)을 제공
+    - mutex instance는 최대 하나의 파이버를 언제든지 lock 을 소유할 수 있음
+    - lock(), try_lock(), unlock()에 대한 multiple concurrent 호출을 허용 
+
+```cpp
+#include <boost/fiber/mutex.hpp>
+
+namespace boost {
+namespace fibers {
+
+class mutex {
+public:
+    mutex();
+    ~mutex();
+
+    mutex( mutex const& other) = delete;
+    mutex & operator=( mutex const& other) = delete;
+
+    // 소유권을 얻을 떄 까지 현재 파이버는 block
+    void lock();
+    // 현재 파이버를 block하지 않고 소유권을 얻으려고 시도
+    bool try_lock();
+    // 현재 파이버에 의해 *this에 대한 lock을 release
+    void unlock();
+};
+
+}}
+```
+
+- Class timed_mutex
+    - mutex와 같이 독점 소유권을 제공 및 최대 하나의 파이버를 언제든지 잠금을 소유할 수 있음
+    - lock(), try_lock(), try_lock_until(), try_lock_for() and unlock() 에 대한 다중 동시 호출 허용
+
+```cpp
+#include <boost/fiber/timed_mutex.hpp>
+
+namespace boost {
+namespace fibers {
+
+class timed_mutex {
+public:
+    timed_mutex();
+    ~timed_mutex();
+
+    timed_mutex( timed_mutex const& other) = delete;
+    timed_mutex & operator=( timed_mutex const& other) = delete;
+
+    // 소유권을 얻을 떄 까지 현재 파이버는 block
+    void lock();
+
+    // 현재 파이버를 block하지 않고 소유권을 얻으려고 시도
+    bool try_lock();
+
+    // 현재 파이버에 의해 *this에 대한 lock을 release
+    void unlock();
+
+    // 현재 파이버에 대한 소유권을 얻으려고 시도
+    // 소유권을 얻을 수 있을 때까지 or 지정된 시간에 도달할 떄까지 block, 지정된 시간이 경과한 경우 timed_mutex::try_lock()으로 동작
+    template< typename Clock, typename Duration >
+    bool try_lock_until( std::chrono::time_point< Clock, Duration > const& timeout_time);
+    // 현재 파이버에 대한 소유권을 얻으려고 시도
+    // 소유권을 얻을 수 있을 때까지 or 지정된 시간에 도달할 떄까지 block, 지정된 시간이 경과한 경우 timed_mutex::try_lock()으로 동작
+    template< typename Rep, typename Period >
+    bool try_lock_for( std::chrono::duration< Rep, Period > const& timeout_duration);
+};
+
+}}
+```
+
+- Class recursive_mutex
+    - exclusive-ownership recursive mutex를 제공
+    - lock(), try_lock(), unlock()에 대한 다중 동시 호출을 허용
+    - 이미 recursive_mutex 소유권을 가지고 있는 파이버는 lock() or try_lock()을 호출하여 추가적인 레벨의 소유권을 획득할 수 있음
+    - 다른 파이버에서 소유권을 획득하기 전에 단일 파이버에서 획득한 각 소유권 레벨에 대해 unlcok()을 한번 호출해야 됨
+
+```cpp
+#include <boost/fiber/recursive_mutex.hpp>
+
+namespace boost {
+namespace fibers {
+
+class recursive_mutex {
+public:
+    recursive_mutex();
+    ~recursive_mutex();
+
+    recursive_mutex( recursive_mutex const& other) = delete;
+    recursive_mutex & operator=( recursive_mutex const& other) = delete;
+
+    // mutex와 동일
+    void lock();
+    bool try_lock() noexcept;
+    void unlock();
+};
+
+}}
+```
+
+- Class recursive_timed_mutex
+
+```cpp
+#include <boost/fiber/recursive_timed_mutex.hpp>
+
+namespace boost {
+namespace fibers {
+
+class recursive_timed_mutex {
+public:
+    recursive_timed_mutex();
+    ~recursive_timed_mutex();
+
+    recursive_timed_mutex( recursive_timed_mutex const& other) = delete;
+    recursive_timed_mutex & operator=( recursive_timed_mutex const& other) = delete;
+
+    // timed_mutex와 동일
+    void lock();
+    bool try_lock() noexcept;
+    void unlock();
+
+    template< typename Clock, typename Duration >
+    bool try_lock_until( std::chrono::time_point< Clock, Duration > const& timeout_time);
+    template< typename Rep, typename Period >
+    bool try_lock_for( std::chrono::duration< Rep, Period > const& timeout_duration);
+};
+
+}}
+```
+
+### 4.2. Condition Variables
+
+- 해당 클래스는 파이버가 다른 파이버의 notification을 기다리는 메커니즘을 제공
+- 파이버가 대기에서 깨어나면 condition이 true인지 확인하고 true이면 계속함
+- condition이 false면 파이버 call은 resume을 위해 waiting
+
+```cpp
+boost::fibers::condition_variable cond;
+boost::fibers::mutex mtx;
+bool data_ready = false;
+
+void process_data();
+
+void wait_for_data_to_process() {
+    {
+        std::unique_lock< boost::fibers::mutex > lk( mtx);
+        while ( ! data_ready) {
+            cond.wait( lk);
+        }
+    }   // release lk
+    process_data();
+}
+```
+
+
+### 4.3. Barriers
+
+### 4.4. Channels
+
+### 4.5. Futures
+
+
+
 ## 참고
 [boost.org fiber](https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/index.html)  
 
