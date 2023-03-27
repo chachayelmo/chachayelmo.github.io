@@ -16,7 +16,7 @@ sitemap:
   priority : 1.0
 comment: true
 date: 2023-02-28
-last_modified_at: 2023-01-28
+last_modified_at: 2023-03-22
 ---
 
 ## 1. Overview
@@ -749,8 +749,140 @@ void wait_for_data_to_process() {
     }   // release lk
     process_data();
 }
+
+// 다른 방법
+void wait_for_data_to_process() {
+    {
+        std::unique_lock< boost::fibers::mutex > lk( mtx);
+        // make condition_variable::wait() perform the loop
+        cond.wait( lk, [](){ return data_ready; });
+    }   // release lk
+    process_data();
+}
 ```
 
+- "lk" 는 condition_variable::wait()에 전달됨
+- wait()는 condition variable을 기다리는 파이버 셋에 원자적으로 파이버를 추가하고 mutex를 unlock 함
+- 파이버가 깨어나면, wait() 호출이 return 되기 전에 mutex를 lock
+- 위처럼 하면 다른 파이버가 shared data를 업데이트하기 위해 mutex를 획득할 수 있으며 condition과 관련된 데이터가 안전하게 동기화됨
+
+- 파이버는 data_ready를 true로 설정한 다음 condition_variable cond에서 condition_variable::notify_one() 또는 condition_variable::notify_all() 을 호출하여 각각 하나의 대기중인 파이버 또는 모든 대기중인 파이버를 깨움
+
+```cpp
+void retrieve_data();
+void prepare_data();
+
+void prepare_data_for_processing() {
+    retrieve_data();
+    prepare_data();
+    {
+        std::unique_lock< boost::fibers::mutex > lk( mtx);
+        data_ready = true;
+    }
+    cond.notify_one();
+}
+```
+
+- Boost.Fiber는 condition_variable_any 와 condition_variable를 제공
+- condition_variable는 std::unique_lock< boost::fibers::mutex > 에서만 wait가 가능
+- condition_variable_any는 user-defined lock type에서도 wait가 가능
+
+- Class condition_variable_any
+
+```cpp
+#include <boost/fiber/condition_variable.hpp>
+
+namespace boost {
+namespace fibers {
+
+class condition_variable_any {
+public:
+    condition_variable_any();
+    ~condition_variable_any();
+
+    condition_variable_any( condition_variable_any const&) = delete;
+    condition_variable_any & operator=( condition_variable_any const&) = delete;
+
+    // wait에 대한 호출에서 *this를 대기중인 파이버들에 대해 block 에서 그중 1개의 파이버를 unblock으로 바꿈
+    void notify_one() noexcept;
+    // 위와 다르게 대기중인 파이버들에 대해 모든 파이버를 unblock으로 바꿈
+    void notify_all() noexcept;
+
+    // 현재 파이버를 block, 파이버는 notify 함수를 받으면 unblock이 가능
+    // wait 함수는 https://www.boost.org/doc/libs/1_80_0/libs/fiber/doc/html/fiber/synchronization/conditions.html#condition_variable_any_wait_until 참조
+    template< typename LockType >
+    void wait( LockType &);
+
+    template< typename LockType, typename Pred >
+    void wait( LockType &, Pred);
+
+    template< typename LockType, typename Clock, typename Duration >
+    cv_status wait_until( LockType &,
+                          std::chrono::time_point< Clock, Duration > const&);
+
+    template< typename LockType, typename Clock, typename Duration, typename Pred >
+    bool wait_until( LockType &,
+                     std::chrono::time_point< Clock, Duration > const&,
+                     Pred);
+
+    template< typename LockType, typename Rep, typename Period >
+    cv_status wait_for( LockType &,
+                        std::chrono::duration< Rep, Period > const&);
+
+    template< typename LockType, typename Rep, typename Period, typename Pred >
+    bool wait_for( LockType &,
+                   std::chrono::duration< Rep, Period > const&,
+                   Pred);
+};
+
+}}
+```
+
+- Class condition_variable
+
+```cpp
+#include <boost/fiber/condition_variable.hpp>
+
+namespace boost {
+namespace fibers {
+
+class condition_variable {
+public:
+    condition_variable();
+    ~condition_variable();
+
+    condition_variable( condition_variable const&) = delete;
+    condition_variable & operator=( condition_variable const&) = delete;
+
+    void notify_one() noexcept;
+    void notify_all() noexcept;
+
+    void wait( std::unique_lock< mutex > &);
+
+    template< typename Pred >
+    void wait( std::unique_lock< mutex > &, Pred);
+
+    template< typename Clock, typename Duration >
+    cv_status wait_until( std::unique_lock< mutex > &,
+                          std::chrono::time_point< Clock, Duration > const&);
+
+    template< typename Clock, typename Duration, typename Pred >
+    bool wait_until( std::unique_lock< mutex > &,
+                     std::chrono::time_point< Clock, Duration > const&,
+                     Pred);
+
+    template< typename Rep, typename Period >
+    cv_status wait_for( std::unique_lock< mutex > &,
+                        std::chrono::duration< Rep, Period > const&);
+
+    template< typename Rep, typename Period, typename Pred >
+    bool wait_for( std::unique_lock< mutex > &,
+                   std::chrono::duration< Rep, Period > const&,
+                   Pred);
+};
+
+}}
+```
 
 ### 4.3. Barriers
 
